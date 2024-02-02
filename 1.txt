@@ -426,10 +426,7 @@ YBTV-2,http://live.ybtvyun.com/video/s10016-7e5f23de35df/index.m3u8
 大家快来看,http://epg.112114.xyz/douyu/9403712
 
 电影直播,#genre#
-CHC家庭影院,http://61.185.200.30:55555/rtp/239.112.205.205:5140
-CHC家庭影院,http://8.210.232.168/php/migu.php?id=chcjtyy
-CHC高清电影,http://61.185.200.30:55555/rtp/239.112.205.206:5140
-CHC动作电影,http://61.185.200.30:55555/rtp/239.112.205.207:5140
+陈翔六点半,http://epg.112114.xyz/douyu/2132902
 斗鱼电影直播①,http://epg.112114.xyz/douyu/4332
 斗鱼电影直播②,http://epg.112114.xyz/douyu/3637778
 斗鱼电影直播③,http://epg.112114.xyz/douyu/6079455
