@@ -113,15 +113,7 @@ CCTV-17,http://hlsbkmgsplive.miguvideo.com/migu/kailu/20200324/cctv17hd/50/index
 
 CCTV-5+,https://node1.olelive.com:6443/live/CCTV5PHD/hls.m3u8
 CCTV-直播中国,https://gcalic.v.myalicdn.com/gc/wgw05_1/index.m3u8?contentid=2820180516001
-CCTV-兵器科技,https://cfss.cc/ds/ysp/qp.php?id=bqkj&Cf.m3u8
-CCTV-第一剧场,http://61.185.200.30:55555/rtp/239.111.205.65:5140
-CCTV-风云剧场,http://61.185.200.30:55555/rtp/239.111.205.66:5140
-CCTV-怀旧剧场,http://61.185.200.30:55555/rtp/239.111.205.67:5140
-CCTV-第一剧场,https://cfss.cc/ds/ysp/qp.php?id=dyjc&Cf.m3u8
-CCTV-风云音乐,https://cfss.cc/ds/ysp/qp.php?id=fyyy&Cf.m3u8
 
-CGTN,https://cfss.cc/ds/ysp/qp.php?id=cgtn&Cf.m3u8
-CGTN,http://61.185.200.30:55555/rtp/239.111.205.32:5140
 
 cec-tv1,http://play.cec-tv.com.cn/channel/cec-tv1.m3u8
 cec-tv2,http://play.cec-tv.com.cn/channel/cec-tv2.m3u8
@@ -172,6 +164,11 @@ CCTV-5+,http://39.134.24.161/dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225
 河北杂技,http://cyz32.livehbindex.hbcatv.cn/live/50000020344549cc94c638aab1e2cd4c.m3u8?bitrate=2300&pt=5
 河北公共,http://cyz32.livehbindex.hbcatv.cn/live/50000020f9834d34b527dec2d5ad8bb5.m3u8?bitrate=2300&pt=5
 河北经济生活,http://cyz32.livehbindex.hbcatv.cn/live/50000020b7644f6784ae6c6eb82d7665.m3u8?bitrate=2300&pt=5
+河北都市,http://tv.pull.hebtv.com/jishi/dushipindao.flv?t=2510710360&k=7bd4710986c2af7552dcf3d4686da62b
+河北少儿科教,http://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=2510710360&k=35e8479f6ac81ee25729454e88afa17c
+河北少儿科教,http://tv.pull.hebtv.com/jishi/shaoerkejiao.flv?t=2510710360&k=9a91756059554d7dceec82db96be148b
+河北影视剧,http://tv.pull.hebtv.com/jishi/yingshijupindao.m3u8?t=2510710360&k=22da13f91d94e04e4935c5ed39dbdb62
+河北影视剧,http://tv.pull.hebtv.com/jishi/yingshijupindao.flv?t=2510710360&k=615492494de96b182322e871a6df4eb2
 石家庄娱乐,http://pluslive1.sjzntv.cn/yule/playlist.m3u8?zhebd
 石家庄新闻综合,http://pluslive1.sjzntv.cn/xmzh/playlist.m3u8?zhebd
 石家庄生活,http://pluslive1.sjzntv.cn/shenghuo/playlist.m3u8?zhebd
@@ -273,17 +270,14 @@ YBTV-2,http://live.ybtvyun.com/video/s10016-7e5f23de35df/index.m3u8
 
 河北卫视,http://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=2510710360&k=3944fff7fdd8f8caf6adce2c9a0ef126
 河北卫视,http://tv.pull.hebtv.com/jishi/weishipindao.flv?t=2510710360&k=14376f1bfbae59edda8d6e8de3ceb0c6
-河北都市,http://tv.pull.hebtv.com/jishi/dushipindao.flv?t=2510710360&k=7bd4710986c2af7552dcf3d4686da62b
+
 河北公共,http://tv.pull.hebtv.com/jishi/gonggongpindao.m3u8?t=2510710360&k=753a034a499730b224c99667ec91eb4e
 河北公共,http://tv.pull.hebtv.com/jishi/gonggongpindao.flv?t=2510710360&k=cff96e95e38e24efef71d7b2d9e884b9
-河北经济,http://tv.pull.hebtv.com/jishi/jingjishenghuo.m3u8?t=2510710360&k=5ae52d7ff5118e85c19a12237a3518cb
-河北经济,http://tv.pull.hebtv.com/jishi/jingjishenghuo.flv?t=2510710360&k=6494958546ba14f920b575250b82577d
+河北经济生活,http://tv.pull.hebtv.com/jishi/jingjishenghuo.m3u8?t=2510710360&k=5ae52d7ff5118e85c19a12237a3518cb
+河北经济生活,http://tv.pull.hebtv.com/jishi/jingjishenghuo.flv?t=2510710360&k=6494958546ba14f920b575250b82577d
 河北农民,http://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=2510710360&k=1c19f1e16256d45e9fdcb9b6725647cc
 河北农民,http://tv.pull.hebtv.com/jishi/nongminpindao.flv?t=2510710360&k=644e1285d17a22dfa4febf82d6a7edb5
-河北少儿科教,http://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=2510710360&k=35e8479f6ac81ee25729454e88afa17c
-河北少儿科教,http://tv.pull.hebtv.com/jishi/shaoerkejiao.flv?t=2510710360&k=9a91756059554d7dceec82db96be148b
-河北影视剧,http://tv.pull.hebtv.com/jishi/yingshijupindao.m3u8?t=2510710360&k=22da13f91d94e04e4935c5ed39dbdb62
-河北影视剧,http://tv.pull.hebtv.com/jishi/yingshijupindao.flv?t=2510710360&k=615492494de96b182322e871a6df4eb2
+
 江苏卫视,https://live-hls.jstv.com/livezhuzhan/jsws.m3u8?upt=9525d28f2510710360
 江苏城市,https://live-hls.jstv.com/livezhuzhan/jscs.m3u8?upt=9bc4860f2510710360
 江苏影视,https://live-hls.jstv.com/livezhuzhan/jsys.m3u8?upt=2012408f2510710360
@@ -304,7 +298,7 @@ YBTV-2,http://live.ybtvyun.com/video/s10016-7e5f23de35df/index.m3u8
 青海都市,http://stream.qhbtv.com/qhds/playlist.m3u8
 
 河北卫视,http://27.185.2.92:9901/hls/17/index.m3u8
-河北经济,http://27.185.2.92:9901/hls/18/index.m3u8
+河北经济生活,http://27.185.2.92:9901/hls/18/index.m3u8
 河北都市,http://27.185.2.92:9901/hls/19/index.m3u8
 河北影视,http://27.185.2.92:9901/hls/20/index.m3u8
 河北少儿科教,http://27.185.2.92:9901/hls/21/index.m3u8
@@ -350,7 +344,7 @@ BTV-纪实,http://27.185.2.92:9901/hls/70/index.m3u8
 国防军事,http://27.185.2.92:9901/hls/72/index.m3u8
 世界地理,http://27.185.2.92:9901/hls/73/index.m3u8
 河北卫视,http://101.19.60.142:9901/tsfile/live/0017_2.m3u8?key=txiptv&playlive=1&authid=0
-河北经济,http://101.19.60.142:9901/tsfile/live/0018_1.m3u8?key=txiptv&playlive=1&authid=0
+河北经济生活,http://101.19.60.142:9901/tsfile/live/0018_1.m3u8?key=txiptv&playlive=1&authid=0
 湖南卫视,http://101.19.60.142:9901/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0
 浙江卫视,http://101.19.60.142:9901/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0
 江苏卫视,http://101.19.60.142:9901/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0
