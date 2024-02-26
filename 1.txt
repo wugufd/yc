@@ -15,6 +15,7 @@ CCTV-12,http://27.185.2.92:9901/hls/12/index.m3u8
 CCTV-13,http://27.185.2.92:9901/hls/13/index.m3u8
 CCTV-14,http://27.185.2.92:9901/hls/14/index.m3u8
 CCTV-15,http://27.185.2.92:9901/hls/15/index.m3u8
+CCTV-16,http://219.140.53.137:8888/rtp/239.69.1.247:11124
 CCTV-NEWS,http://27.185.2.92:9901/hls/16/index.m3u8
 CCTV-1,http://101.19.60.142:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-3,http://101.19.60.142:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -105,8 +106,8 @@ CCTV-15,http://61.169.37.218:9901/tsfile/live/0015_1.m3u8?key=txiptv
 CCTV-15,http://cfss.cc/api/ysp/cctv15.m3u8
 CCTV-15,https://iptv.luas.edu.cn/liverespath/59c02d176e7c3b05a62a9bb42be1ca2a92df2e1c/aefabb5259-0-0-65038e86b205c58b18c0c661afd99fae/index.m3u8
 
-CCTV-16,https://epg.pw/stream/a40cab6b916dec5f03cb8d888d13baa8dfc371a45b5e4a51f557ae266602a9c1.ctv
-CCTV-16,https://epg.pw/stream/517815f160c93d58422d9994ce94181819cb9ff2a0492036b3ed93e479336184.ctv
+
+
 
 CCTV-17,http://cyz32.livehbindex.hbcatv.cn/live/500000208b8d41c4b436ef32428c229d.m3u8?bitrate=2300&pt=5
 CCTV-17,http://hlsbkmgsplive.miguvideo.com/migu/kailu/20200324/cctv17hd/50/index.m3u8?&encrypt=
