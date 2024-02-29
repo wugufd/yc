@@ -6,6 +6,12 @@
 {"key":"xh","name":"🎯2023.12.10更新","type":3,"api":"csp_xh","searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key":"drpy_js_荐片","name":"🏆荐片[js]","type":3,"api":"./lib/drpy2.min.js","searchable":1,"quickSearch":1,"changeable":1,"ext":"./js/荐片.js"},
 {"key":"drpy_js_秋霞","name":"🦚秋霞[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/秋霞.js"},
+{"key":"csp_SP33","name":"🍇三三┃解析","type":3,"api":"csp_SP33","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
+{"key":"drpy_js_360影视","name":"🥇360[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/360影视.js"},
+{"key":"drpy_js_奇珍异兽","name":"🥈爱奇艺[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/奇珍异兽.js"},
+{"key":"drpy_js_百忙无果","name":"🥉芒果[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/百忙无果.js"},
+{"key":"drpy_js_腾云驾雾","name":"🎖️腾讯[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/腾云驾雾.js"},
+{"key":"drpy_js_优酷","name":"🦜优酷[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/优酷.js"},
 {"key":"南瓜","name":"南瓜┃App","type":3,"api":"csp_NanGua","searchable":1,"quickSearch":1,"playerType":2,"filterable":1,"ext":""}	
 ],
 
