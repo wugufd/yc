@@ -42,7 +42,6 @@ YBTV-2,http://live.ybtvyun.com/video/s10016-7e5f23de35df/index.m3u8
 安多卫视,http://stream.qhbtv.com/adws/sd/live.m3u8
 安徽卫视,http://111.225.115.142:808/tsfile/live/1012_1.m3u8
 东南卫视,http://111.225.115.142:808/tsfile/live/1013_1.m3u8
-甘肃卫视,http://111.225.115.142:808/tsfile/live/0141_1.m3u8
 广东卫视,http://111.225.115.142:808/tsfile/live/1027_1.m3u8
 广西卫视,http://111.225.115.142:808/tsfile/live/0113_1.m3u8
 黑龙江卫视,http://111.225.115.142:808/tsfile/live/1019_1.m3u8
