@@ -193,11 +193,6 @@ CCTV-15音乐,http://106.115.27.107:9999/tsfile/live/0015_1.m3u8
 春晚2023,https://txmov2.a.kwimgs.com/bs3/video-hls/5251197255879398624_hlshd15.m3u8
 春晚2023,https://vod12.xmyysw.com/20230122/JgWBWCQH/index.m3u8
 
-测试,#genre#
-山东卫视,https://livealone302.iqilu.com/iqilu/sdtvhjOF03kn.m3u8
-齐鲁频道,https://livealone302.iqilu.com/iqilu/qlpdhjOF03kn.m3u8
-山东文旅频道,https://livealone302.iqilu.com/iqilu/yspdhjOF03kn.m3u8
-山东生活频道,https://livealone302.iqilu.com/iqilu/shpdhjOF03kn.m3u8
-山东新闻频道,https://livealone302.iqilu.com/iqilu/ggpdhjOF03kn.m3u8
+
 
 
