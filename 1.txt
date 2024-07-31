@@ -1,9 +1,13 @@
 央视稳定源,#genre#
 CCTV-1,https://node1.olelive.com:6443/live/CCTV1HD/hls.m3u8
+CCTV-2,http://liveop.cctv.cn/hls/CCTV28bee868714f04ea2af79947bb9b46fc3H/playlist.m3u8
+CCTV-2,https://liveop.cctv.cn/hls/CCTV28bee868714f04ea2af79947bb9b46fc3H/playlist.m3u8
 CCTV-2,https://node1.olelive.com:6443/live/CCTV2HD/hls.m3u8
 CCTV-2,http://liveop.cctv.cn/hls/CCTV28bee868714f04ea2af79947bb9b46fc3H/playlist.m3u8
 CCTV-2,https://liveop.cctv.cn/hls/CCTV28bee868714f04ea2af79947bb9b46fc3H/playlist.m3u8
+CCTV-4K,http://liveop.cctv.cn/hls/4KHD/playlist.m3u8#https://liveop.cctv.cn/hls/4KHD/playlist.m3u8
 CCTV-5,https://node1.olelive.com:6443/live/CCTV5HD/hls.m3u8
+CCTV-6,http://mobilelive-timeshift.ysp.cctv.cn/timeshift/ysp/2013693901/timeshift.m3u8?delay=0#http://mobilelive-ds.ysp.cctv.cn/ysp/2013693901.m3u8
 CCTV-6,https://node1.olelive.com:6443/live/CCTV6HD/hls.m3u8
 CCTV-8,https://node1.olelive.com:6443/live/CCTV8HD/hls.m3u8
 CCTV-8,https://epg.pw/stream/0a1873ab23ed1a7848161a2afe9f0afc6abf13a7fa7e8a7bf96ac4afa5919ca4.m3u8
