@@ -709,6 +709,27 @@ CHC家庭影院,http://[2409:8087:4c0a:22:1::11]:6410/170000001115/UmaiCHAN63807
 黑莓电影,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225743/index.m3u8$LR•IPV6『线路5』
 黑莓电影,http://[2409:8087:2001:20:2800:0:df6e:eb08]/ott.mobaibox.com/PLTV/3/224/3221227520/index.m3u8$LR•IPV6『线路6』
 
+国外,#genre#
+黑莓动画,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225662/index.m3u8
+Arirang Korea,http://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
+MyTime Movie Network,https://mytime-tcl.amagi.tv/playlist288-p.m3u8
+myTV (KCWX-TV),http://65.36.6.216:1935/live/kcwx.smil/playlist.m3u8
+MUTV 英国曼联 足球,https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/6058004203001/playlist.m3u8
+NASA TV 1,https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master.m3u8
+NASA TV 2,https://ntv2.akamaized.net/hls/live/2013923/NASA-NTV2-HLS/master.m3u8
+National Geographic,http://45.159.74.13:80/NationalGeographic/index.m3u8
+NOW 70s 音乐,https://lightning-now70s-samsungnz.amagi.tv/playlist.m3u8
+NOW 80s 音乐,https://lightning-now80s-samsungnz.amagi.tv/playlist.m3u8
+NOW Rock 音乐,https://lightning-now90s-samsungnz.amagi.tv/playlist.m3u8
+Red Bull TV,http://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
+Russia Today 英语,http://69.64.57.208:8080/russiatoday/playlist.m3u8
+Russia Today 英语,https://rt-glb.rttv.com/live/rtnews/playlist_2500Kb.m3u8
+Russia Today 法语,http://69.64.57.208:8080/rtfrance/playlist.m3u8
+Tennis Channel,https://tennischannel-int-samsunguk.amagi.tv/playlist.m3u8
+UBC SBS 韩国,http://59.23.231.102:1935/live/UBCstream/playlist.m3u8
+Wild Earth,https://wildearth-plex.amagi.tv/masterR1080p.m3u8
+Yahoo Finance,https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
+ZOOMOO 动画,https://amg01553-blueantmediaasi-zoomoonz-samsungnz-rdufn.amagi.tv/playlist/amg01553-blueantmediaasi-zoomoonz-samsungnz/playlist.m3u8
 
 春晚,#genre#
 春晚1983,https://vd2.bdstatic.com/mda-nmgf0aiczefpbjyv/360p/h264/1671273368681637465/mda-nmgf0aiczefpbjyv.mp4     
@@ -753,6 +774,23 @@ CHC家庭影院,http://[2409:8087:4c0a:22:1::11]:6410/170000001115/UmaiCHAN63807
 春晚2023,https://txmov2.a.kwimgs.com/bs3/video-hls/5251197255879398624_hlshd15.m3u8
 春晚2023,https://vod12.xmyysw.com/20230122/JgWBWCQH/index.m3u8
 
-
+电台,#genre#
+怀集音乐台,http://live.xmcdn.com:80/live/966/64.m3u8
+高清音乐台,http://live.xmcdn.com:80/live/1427/64.m3u8
+清晨音乐台,http://live.xmcdn.com:80/live/1011/64.m3u8
+老歌音乐台,http://live.xmcdn.com:80/live/2628/64.m3u8
+北京音乐广播,http://live.xmcdn.com/live/95/64.m3u8
+北京经典,http://live.funhillrm.com/4/sd/live.m3u8
+80后音悦台,http://stream3.hndt.com/now/SFZeH2cb/playlist.m3u8
+音乐-巴彦淖尔交通广播,http://live.xmcdn.com/live/1096/64.m3u8
+音乐-湖北城市之声,http://satellitepull.cnr.cn/live/wx32hubjtgb/playlist.m3u8
+潮流音悦台,http://play-radio-stream3.hndt.com/now/Or5au0KN/playlist.m3u8
+动感音悦台,http://stream3.hndt.com/now/ufjjbZxV/playlist.m3u8
+格莱美音乐台,http://stream3.hndt.com/now/yorSd1X2/playlist.m3u8
+民谣音乐台,http://stream3.hndt.com/now/DTK5qc83/playlist.m3u8
+天籁古典,http://stream3.hndt.com/now/MdOpB4zP/playlist.m3u8
+天籁之音 Hi-Fi Radio,http://play-radio-stream3.hndt.com/now/JxkyN5mR/playlist.m3u8
+天籁之音-国风,http://play-radio-stream3.hndt.com/now/UzPxbRaT/playlist.m3u8
+天籁之音-经典正流行,http://play-radio-stream3.hndt.com/now/WUBA5hW2/playlist.m3u8
 
 
