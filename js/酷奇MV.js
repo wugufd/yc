@@ -4,7 +4,7 @@ var rule = {
     // homeUrl:'/play/',
     url:'/play/fyclass_fypage.html',
     searchUrl:'/search.php?key=**&pages=fypage',
-    searchable:10,
+    searchable:1,
     quickSearch:0,
     // class_parse:'.main:eq(1)&&li;a&&Text;a&&href;.*/(\\d+)_1.html',
     // class_parse:'.lei_class&&a;a&&Text;a&&href;.*/(\\d+)_1.html',
