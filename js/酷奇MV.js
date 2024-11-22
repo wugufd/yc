@@ -21,6 +21,6 @@ var rule = {
     推荐:'*',
     一级:'js:var d=[];pdfh=jsp.pdfh;pdfa=jsp.pdfa;pd=jsp.pd;var html=request(input);let list=pdfa(html,".mv_list&&li");list.forEach((it)=>{d.push({title:pdfh(it,".name&&Text"),desc:"🎤"+pdfh(it,".singer&&Text")+"｜"+pdfh(it,".time&&Text"),pic_url:pd(it,"img&&src"),url:pd(it,"a&&href"),})});setResult(d);',
     二级:'*',
-    //搜索:'.video_list&&li;a&&title;;.singer&&Text;a&&href;.t_03:eq(1)&&Text',
-    搜索:'.video_list search_list&&li;a&&title;;.name&&a;a&&href;.t_03:eq(1)&&Text'
+    搜索:'.video_list&&li;a&&title;;.singer&&Text;a&&href;.t_03:eq(1)&&Text',
+    //搜索:'.video_list search_list&&li;a&&title;;.name&&a;a&&href;.t_03:eq(1)&&Text'
 }
