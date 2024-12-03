@@ -9,14 +9,6 @@
 			"api": "http://cj.lziapi.com/api.php/provide/vod/",
 			"searchable": 1,
 			"quickSearch": 1
-		},
-		{
-			"key": "闪电资源",
-			"name": "闪电资源(切)",
-			"type": 1,
-			"api": "http://sdzyapi.com/api.php/provide/vod/",
-			"searchable": 1,
-			"quickSearch": 1
 		}
 		
 	],
