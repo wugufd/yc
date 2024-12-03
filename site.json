@@ -1,37 +1,12 @@
 {
 	"spider": "https://",
-	"lives": [
-		{
-			"group": "卫视频道",
-			"channels": [
-				{
-					"name": "湖南卫视",
-					"urls": [
-						"http://113.15.185.237:8181/tsfile/live/0128_1.m3u8",
-						"http://123.14.86.181:8888/hls/27/index.m3u8",
-						"http://27.11.249.135:8004/udp/225.0.4.75:7980",
-						"http://60.220.167.63:8082/rtp/226.0.2.33:8176",
-						"http://121.24.98.104:8090/hls/56/index.m3u8"
-					]
-				},
-				{
-					"name": "东方卫视",
-					"urls": [
-						"http://113.15.185.237:8181/tsfile/live/0107_1.m3u8",
-						"http://36.46.99.145:8010/rtp/239.112.205.61:5140",
-						"http://60.220.167.63:8082/rtp/226.0.2.175:9312",
-						"http://27.11.249.135:8004/udp/225.0.4.80:7980"
-					]
-				}
-			]
-		}
-	],
+	"lives": [],
 	"sites": [
 		{
-			"key": "雨哥哥影视",
-			"name": "雨哥哥影视(聚)",
+			"key": "紅牛資源",
+			"name": "紅牛資源",
 			"type": 1,
-			"api": "http://cj.baozi66.top:66/api.php/provide/vod/",
+			"api": "https://www.hongniuzy2.com/api.php/provide/vod",
 			"searchable": 1,
 			"quickSearch": 1
 		},
