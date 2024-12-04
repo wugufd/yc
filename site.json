@@ -3,6 +3,38 @@
 	"lives": [],
 	"sites": [
 		{
+			"key": "最大资源",
+			"name": "最大资源",
+			"type": 1,
+			"api": "https://api.zuidapi.com/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "速播资源",
+			"name": "速播资源",
+			"type": 1,
+			"api": "https://subocaiji.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "索尼资源",
+			"name": "索尼资源",
+			"type": 1,
+			"api": "https://suoniapi.com/api.php/provide/vod/",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "极速资源",
+			"name": "极速资源",
+			"type": 1,
+			"api": "https://jszyapi.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
 			"key": "豪华资源",
 			"name": "豪华资源",
 			"type": 1,
@@ -212,7 +244,10 @@
 		}
 	],
 	"parses": [
-	   {"name":"鸭鸭","type":0,"url":"https://jx.yayazy.cc/m3u8/?url="},
+	   {"name":"最大","type":0,"url":"https://jx.zuidplay.com/m3u8Player/?url="},
+		{"name":"速播","type":0,"url":"https://subojiexi.com/play/?url="},
+		{"name":"极速","type":0,"url":"https://jisjiexi.com/play/?url="},
+		{"name":"鸭鸭","type":0,"url":"https://jx.yayazy.cc/m3u8/?url="},
 		{"name":"豪华","type":0,"url":"https://hhjiexi.com/play/?url="},
 		{"name":"牛牛","type":0,"url":"https://www.hnjiexi.com/m3u8/?url="},
 	   {"name":"牛牛商业","type":0,"url":"https://jiexi.niuniuzy.org/m3u8/?url="},
