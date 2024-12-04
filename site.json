@@ -3,6 +3,62 @@
 	"lives": [],
 	"sites": [
 		{
+			"key": "豪华资源",
+			"name": "豪华资源",
+			"type": 1,
+			"api": "https://hhzyapi.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "鸭鸭资源",
+			"name": "鸭鸭资源",
+			"type": 1,
+			"api": "https://cj.yayazy.net/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "牛牛资源",
+			"name": "牛牛资源",
+			"type": 1,
+			"api": "https://api.niuniuzy.me/api.php/provide/vod/",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "小黄人资源",
+			"name": "小黄人资源",
+			"type": 1,
+			"api": "https://iqyi.xiaohuangrentv.com/api.php/provide/vod/",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "宝片资源",
+			"name": "宝片资源",
+			"type": 1,
+			"api": "https://zpsps.com/api.php/provide/vod/",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "OK资源",
+			"name": "OK资源",
+			"type": 1,
+			"api": "https://api.okzy.org/api.php/provide/vod/from/okm3u8",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "360资源",
+			"name": "360资源",
+			"type": 1,
+			"api": "https://360zy.com/api.php/provide/vod/",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
 			"key": "暴风资源",
 			"name": "暴风资源",
 			"type": 1,
@@ -156,6 +212,12 @@
 		}
 	],
 	"parses": [
+	   {"name":"鸭鸭","type":0,"url":"https://jx.yayazy.cc/m3u8/?url="},
+		{"name":"豪华","type":0,"url":"https://hhjiexi.com/play/?url="},
+		{"name":"牛牛","type":0,"url":"https://www.hnjiexi.com/m3u8/?url="},
+	   {"name":"牛牛商业","type":0,"url":"https://jiexi.niuniuzy.org/m3u8/?url="},
+	   {"name":"OK","type":0,"url":"https://jiexi.okzyw.info/m3u8/?url="},
+	   {"name":"360","type":0,"url":"https://www.360jiexi.com/player/?url="},
 	   {"name":"小俊","type":0,"url":"http://api.xiaog.cc/player/?url="},
 	   {"name":"暴风","type":0,"url":"https://vip.vipuuvip.com/?url="},
 	   {"name":"黑木耳","type":0,"url":"https://hoplayer.com/index.html?url="},
