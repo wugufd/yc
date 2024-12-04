@@ -156,6 +156,7 @@
 		}
 	],
 	"parses": [
+	   {"name":"小俊","type":0,"url":"http://api.xiaog.cc/player/?url="},
 	   {"name":"暴风","type":0,"url":"https://vip.vipuuvip.com/?url="},
 	   {"name":"黑木耳","type":0,"url":"https://hoplayer.com/index.html?url="},
 	   {"name":"ikun","type":0,"url":"https://www.ikdmjx.com/?url="},
