@@ -1,0 +1,243 @@
+{
+	"code": 1,
+	"msg": "数据列表",
+	"page": 1,
+	"pagecount": 3393,
+	"limit": "20",
+	"total": 67858,
+	"list": [
+		{
+			"vod_id": 70043,
+			"vod_name": "打翻春色",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "dafanchunse",
+			"vod_time": "2024-12-10 15:15:02",
+			"vod_remarks": "第81-99集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70042,
+			"vod_name": "谁杀了我的女儿",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "shuishaliaowodenver",
+			"vod_time": "2024-12-10 15:15:02",
+			"vod_remarks": "第41-58集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70041,
+			"vod_name": "换大佬攻略后渣男跪求我回头",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "huandalaogongluehouzhananguiqiuwohuitou",
+			"vod_time": "2024-12-10 15:15:02",
+			"vod_remarks": "第21-40集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70040,
+			"vod_name": "深宫禁恋录",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "shengongjinlianlu",
+			"vod_time": "2024-12-10 15:15:02",
+			"vod_remarks": "第61-69集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70039,
+			"vod_name": "我痴呆了，请多关照。～欢迎回家，妈妈",
+			"type_id": 16,
+			"type_name": "记录片",
+			"vod_en": "wochidailiaoqingduoguanzhaohuanyinghuijiamama",
+			"vod_time": "2024-12-10 14:30:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70038,
+			"vod_name": "24-25赛季西甲第16轮 奥萨苏纳vs阿拉维斯",
+			"type_id": 29,
+			"type_name": "体育赛事",
+			"vod_en": "2425saijixijiadi16lunaosasunavsalaweisi",
+			"vod_time": "2024-12-10 13:50:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70037,
+			"vod_name": "北城有佳人",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "beichengyoujiaren",
+			"vod_time": "2024-12-10 13:50:02",
+			"vod_remarks": "第41-59集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70036,
+			"vod_name": "逝去的婚姻",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "shiqudehunyin",
+			"vod_time": "2024-12-10 13:50:02",
+			"vod_remarks": "第41-60集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70035,
+			"vod_name": "一次外出(外出之祸)",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "yiciwaichuwaichuzhihuo",
+			"vod_time": "2024-12-10 13:50:02",
+			"vod_remarks": "第41-65集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70034,
+			"vod_name": "逃妻寻女路",
+			"type_id": 30,
+			"type_name": "短剧",
+			"vod_en": "taoqixunnvlu",
+			"vod_time": "2024-12-10 13:50:02",
+			"vod_remarks": "第61-85集完结",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70033,
+			"vod_name": "24-25赛季西甲第16轮 赫塔菲vs西班牙人",
+			"type_id": 29,
+			"type_name": "体育赛事",
+			"vod_en": "2425saijixijiadi16lunhetafeivsxibanyaren",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70032,
+			"vod_name": "24-25赛季英超第15轮 西汉姆联vs狼队",
+			"type_id": 29,
+			"type_name": "体育赛事",
+			"vod_en": "2425saijiyingchaodi15lunxihanmulianvslangdui",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70031,
+			"vod_name": "24-25赛季西甲第16轮 马德里竞技vs塞维利亚",
+			"type_id": 29,
+			"type_name": "体育赛事",
+			"vod_en": "2425saijixijiadi16lunmadelijingjivssaiweiliya",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 70030,
+			"vod_name": "24-25赛季英超第15轮 热刺vs切尔西",
+			"type_id": 29,
+			"type_name": "体育赛事",
+			"vod_en": "2425saijiyingchaodi15lunrecivsqieerxi",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "正片",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 69590,
+			"vod_name": "灰姑娘游戏",
+			"type_id": 5,
+			"type_name": "韩剧",
+			"vod_en": "huiguniangyouxi",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第06集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 69470,
+			"vod_name": "哈利·波特：烘焙奇才",
+			"type_id": 27,
+			"type_name": "综艺",
+			"vod_en": "halibotehongbeiqicai",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第4集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 68859,
+			"vod_name": "设得兰谜案 第九季",
+			"type_id": 3,
+			"type_name": "欧美剧",
+			"vod_en": "shedelanmiandijiuji",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第05集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 68401,
+			"vod_name": "告密者：黑暗中生活的野兽们",
+			"type_id": 6,
+			"type_name": "日剧",
+			"vod_en": "gaomizheheianzhongshenghuodeyeshoumen",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第05集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 68143,
+			"vod_name": "阿荣与阿玉",
+			"type_id": 28,
+			"type_name": "台湾剧",
+			"vod_en": "arongyuayu",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第26集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		},
+		{
+			"vod_id": 67172,
+			"vod_name": "无血无泪普通话版",
+			"type_id": 5,
+			"type_name": "韩剧",
+			"vod_en": "wuxuewuleiputonghuaban",
+			"vod_time": "2024-12-10 13:45:02",
+			"vod_remarks": "第39集",
+			"vod_play_from": "jinyingm3u8",
+			"vod_play_url": ""
+		}
+	],
+	"class": [
+		{
+			"type_id": 1,
+			"type_pid": 0,
+			"type_name": "电视剧"
+		},
+		{
+			"type_id": 2,
+			"type_pid": 0,
+			"type_name": "电影"
+		}
+
+	]
+}
