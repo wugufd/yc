@@ -3,6 +3,14 @@
 	"lives": [],
 	"sites": [
 		{
+			"key": "如意资源",
+			"name": "如意资源",
+			"type": 1,
+			"api": "https://cj.rycjapi.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
 			"key": "金鹰资源",
 			"name": "金鹰资源",
 			"type": 1,
@@ -253,7 +261,8 @@
 		}
 	],
 	"parses": [
-	   {"name":"金鹰","type":0,"url":"https://hd.iapijy.com/play?url="},
+	   {"name":"如意","type":0,"url":"https://ryplayer.com?url="},
+		{"name":"金鹰","type":0,"url":"https://hd.iapijy.com/play?url="},
 		{"name":"最大","type":0,"url":"https://jx.zuidplay.com/m3u8Player/?url="},
 		{"name":"速播","type":0,"url":"https://subojiexi.com/play/?url="},
 		{"name":"极速","type":0,"url":"https://jisjiexi.com/play/?url="},
