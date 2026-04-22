@@ -298,6 +298,14 @@
 			"api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
 			"searchable": 1,
 			"quickSearch": 1
+		},
+		{
+			"key": "无尽资源new",
+			"name": "无尽资源new",
+			"type": 1,
+			"api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
 		}
 	],
 	"parses": [
@@ -323,8 +331,9 @@
 	   {"name":"ikun","type":0,"url":"https://www.ikdmjx.com/?url="},
 	   {"name":"非凡","type":0,"url":"https://svip.ffzyplay.com/?url="},
 	   {"name":"新浪","type":0,"url":"https://www.xinlangjiexi.com/m3u8/?url="},
-           {"name":"量子","type":0,"url":"https://lziplayer.com/?url="},
+       {"name":"量子","type":0,"url":"https://lziplayer.com/?url="},
 	   {"name":"无尽","type":0,"url":"https://jx.wujinkk.com/dplayer/?url="},
+		{"name":"无尽new","type":0,"url":"https://jx.xllmcms.com/dplayer/?url="},
 	   {"name":"快车","type":0,"url":"https://askvodbf.com/play.html?url="},
            {"name":"综合","type":0,"url":"https://jx.jsonplayer.com/player/?url="},
            {"name":"夜幕","type":0,"url":"https://www.yemu.xyz/?url=","ext":{"flag":["qq","腾讯","qiyi","iqiyi","爱奇艺","奇艺","youku","优酷","mgtv","芒果","letv","乐视","pptv","PPTV","sohu","bilibili","哔哩哔哩","哔哩"]}},
