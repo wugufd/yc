@@ -3,6 +3,46 @@
 	"lives": [],
 	"sites": [
 		{
+			"key": "U酷资源",
+			"name": "U酷资源",
+			"type": 1,
+			"api": "https://api.ukuapi88.com/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "电影天堂资源",
+			"name": "电影天堂资源",
+			"type": 1,
+			"api": "https://caiji.dyttzyapi.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "豪华资源",
+			"name": "豪华资源",
+			"type": 1,
+			"api": "https://hhzyapi.com/api.php/provide/vod",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "索尼资源",
+			"name": "索尼资源",
+			"type": 1,
+			"api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
+			"key": "无水印资源",
+			"name": "无水印资源",
+			"type": 1,
+			"api": "https://api.wsyzy.net/api.php/provide/vod/?ac=list",
+			"searchable": 1,
+			"quickSearch": 1
+		},
+		{
 			"key": "如意资源",
 			"name": "如意资源",
 			"type": 1,
@@ -261,6 +301,11 @@
 		}
 	],
 	"parses": [
+	   {"name":"U酷","type":0,"url":"https://api.ukubf.com/m3u8/?url="},
+		{"name":"电影天堂","type":0,"url":"https://vip.dyttzyplay.com/?url="},
+		{"name":"豪华","type":0,"url":"https://hhzyjiexi.com/play/?url="},
+	   {"name":"索尼","type":0,"url":"https://dxfbk.com/?url="},
+	   {"name":"无水印","type":0,"url":"https://wsyzy.top/m3u8/?url="},
 	   {"name":"如意","type":0,"url":"https://ryplayer.com?url="},
 	   {"name":"金鹰","type":0,"url":"https://hd.iapijy.com/play?url="},
 	   {"name":"最大","type":0,"url":"https://jx.zuidplay.com/m3u8Player/?url="},
