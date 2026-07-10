@@ -4,7 +4,7 @@
 		{
       "name": "直播",
       "type": 0,
-      "url": "https://iptv.cqshushu.com/ysws.php",
+      "url": "./nbdn",
       "playerType": 2,
       "timeout": 10
     }
