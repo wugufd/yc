@@ -138,3 +138,12 @@ CGTN,http://59.110.175.70:23567/PLTV/651/224/3221226666/1.m3u8
 北京卡酷少儿,http://59.110.175.70:23567/PLTV/651/224/3221226677/1.m3u8
 北京纪实科教,http://59.110.175.70:23567/PLTV/651/224/3221226658/1.m3u8
 
+电影,#genre#
+CHC动作电影,http://183.185.153.79:8001/rtp/226.0.2.94:8012
+CHC动作电影,http://38.75.136.137:98/gslb/dsdqpub/chcdz.m3u8?auth=testpub
+CHC家庭影院,http://123.12.84.199:8187/rtp/225.1.4.209:1262#http://198.204.228.26/live/chcjt.m3u8#http://38.75.136.137:98/gslb/dsdqpub/chcjt.m3u8?auth=testpub
+翡翠台,http://116.77.33.98:44330/tsfile/live/1008_1.m3u8?key=txiptv&playlive=0&authid=0
+重温经典,http://120.76.248.139/live/bfgd/4200000635.m3u8
+电影台,http://118.122.144.115:8888/newlive/live/hls/38/live.m3u8
+邵氏电影,http://rihou.cc:555/tv/[FY]邵氏电影
+東森电影,http://iptv.4666888.xyz/iptv2A.php?id=48
