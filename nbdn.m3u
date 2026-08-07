@@ -66,3 +66,5 @@ https://cdn.ryplay11.com/20260623/202170_66c857d4/2000k/hls/index.m3u8
 https://cdn.ryplay11.com/20260623/202171_39255584/2000k/hls/index.m3u8
 #EXTINF:-1 tvg-name="第33集" tvg-logo="https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2026/06/73fb159cca8f87-360x528.jpg" group-title="南部档案33集",第33集
 https://cdn.ryplay11.com/20260623/202172_8bab181c/2000k/hls/index.m3u8
+#EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2026/06/73fb159cca8f87-360x528.jpg" group-title="CCTV1",CCTV1
+http://198.204.228.26/live/cctv1hd.m3u8?ysp
