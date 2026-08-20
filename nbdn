@@ -166,6 +166,29 @@ CGTN外语纪录频道,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/20
 CGTN西班牙语频道,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/2024182101_dlna.m3u8
 CGTN西班牙语频道,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/2024182103_dlna.m3u8
 
+央视0820,#genre#
+CCTV1,http://192.151.150.154/live/cctv1hd.m3u8
+CCTV2,http://192.151.150.154/live/cctv2hd.m3u8
+CCTV3,http://192.151.150.154/live/cctv3hd.m3u8
+CCTV4,http://192.151.150.154/live/cctv4hd.m3u8
+CCTV-4K,http://192.151.150.154/live/cctv4k.m3u8
+CCTV5,http://192.151.150.154/live/cctv5hd.m3u8
+CCTV5+,http://192.151.150.154/live/cctv5p.m3u8
+CCTV6,http://192.151.150.154/live/cctv6hd.m3u8
+CCTV7,http://192.151.150.154/live/cctv7hd.m3u8
+CCTV8,http://192.151.150.154/live/cctv8hd.m3u8
+CCTV-8K,http://192.151.150.154/live/cctv8k.m3u8
+CCTV9,http://192.151.150.154/live/cctv9hd.m3u8
+CCTV10,http://192.151.150.154/live/cctv10hd.m3u8
+CCTV11,http://192.151.150.154/live/cctv11hd.m3u8
+CCTV12,http://192.151.150.154/live/cctv12hd.m3u8
+CCTV13,http://192.151.150.154/live/cctv13hd.m3u8
+CCTV14,http://192.151.150.154/live/cctv14hd.m3u8
+CCTV15,http://192.151.150.154/live/cctv15hd.m3u8
+CCTV16,http://192.151.150.154/live/cctv16hd.m3u8
+CCTV17,http://192.151.150.154/live/cctv17hd.m3u8
+CCTV-卫生健康,http://192.151.150.154/live/wsjk.m3u8
+CCTV-央视文化精品,http://192.151.150.154/live/ysjp.m3u8
 
 
 卫视,#genre#
@@ -443,6 +466,56 @@ CGTN西班牙语频道,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/20
 中国教育电视台1频道,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/2022823801_dlna.m3u8
 重庆卫视,http://43.152.31.17:843/hlslive-tx-cdn.ysp.cctv.cn/ysp/2024061103_dlna.m3u8
 
+卫视0820,#genre#
+北京卡酷少儿,http://192.151.150.154/live/btvkk.m3u8
+成龙电影,http://192.151.150.154/live/lbcl.m3u8
+大湾区卫视,http://192.151.150.154/live/nfws.m3u8
+东方卫视HD,http://192.151.150.154/live/dfwshd.m3u8
+东南卫视HD,http://192.151.150.154/live/dnwshd.m3u8
+广东体育,http://192.151.150.154/live/gdty.m3u8
+广东卫视HD,http://192.151.150.154/live/gdwshd.m3u8
+广东新闻,http://192.151.150.154/live/gdxw.m3u8
+广东珠江,http://192.151.150.154/live/gdzj.m3u8
+广西都市,http://192.151.150.154/live/gxds.m3u8
+广西国际,http://192.151.150.154/live/gxgj.m3u8
+广西卫视HD,http://192.151.150.154/live/gxwshd.m3u8
+广西新闻,http://192.151.150.154/live/gxxw.m3u8
+广西影视,http://192.151.150.154/live/gxys.m3u8
+广西综艺旅游,http://192.151.150.154/live/gxzy.m3u8
+湖北教育,http://192.151.150.154/live/hbjy.m3u8
+湖北经视,http://192.151.150.154/live/hbjs.m3u8
+湖北垄上,http://192.151.150.154/live/hbls.m3u8
+湖北生活,http://192.151.150.154/live/hbty.m3u8
+湖北卫视HD,http://192.151.150.154/live/hbwshd.m3u8
+湖北影视,http://192.151.150.154/live/hbys.m3u8
+湖北综合,http://192.151.150.154/live/hbzh.m3u8
+湖南教育,http://192.151.150.154/live/hnjy.m3u8
+湖南卫视HD,http://192.151.150.154/live/hnwshd.m3u8
+湖南娱乐,http://192.151.150.154/live/hnyl.m3u8
+吉林都市,http://192.151.150.154/live/jlds.m3u8
+吉林生活,http://192.151.150.154/live/jlsh.m3u8
+吉林综艺文化,http://192.151.150.154/live/jlfz.m3u8
+江苏卫视HD,http://192.151.150.154/live/jswshd.m3u8
+江西少儿家庭,http://192.151.150.154/live/jxtv6.m3u8
+江西新闻频道,http://192.151.150.154/live/jxtv7.m3u8
+辽宁卫视HD,http://192.151.150.154/live/lnwshd.m3u8
+林正英影院,http://192.151.150.154/live/lblzy.m3u8
+青海卫视,http://192.151.150.154/live/qhws.m3u8
+山东卫视HD,http://192.151.150.154/live/sdwshd.m3u8
+陕西卫视HD,http://192.151.150.154/live/snwshd.m3u8
+深圳卫视HD,http://192.151.150.154/live/szwshd.m3u8
+天津卫视HD,http://192.151.150.154/live/tjwshd.m3u8
+五星体育,http://192.151.150.154/live/wxtyhd.m3u8
+西藏卫视,http://192.151.150.154/live/xzws.m3u8
+新疆汉语体育健康,http://192.151.150.154/live/xjtv7.m3u8
+新疆汉语影视,http://192.151.150.154/live/xjtv6.m3u8
+浙江卫视HD,http://192.151.150.154/live/zjwshd.m3u8
+中国教育3,http://192.151.150.154/live/cetv3.m3u8
+中央新影-发现之旅,http://192.151.150.154/live/fxzl.m3u8
+中央新影-老故事,http://192.151.150.154/live/lgs.m3u8
+重庆卫视HD,http://192.151.150.154/live/cqwshd.m3u8
+周润发电影,http://192.151.150.154/live/lbzrf.m3u8
+周星驰电影,http://192.151.150.154/live/lbzxc.m3u8
 
 
 电影,#genre#
