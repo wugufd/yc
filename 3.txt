@@ -13,7 +13,7 @@
       "type": 1,
       "api": "https://api.yyzy-tv.vip/inc/apijson.php?ac=detail",
       "searchable": 1
-    },
+    }
   ],
   "parses": [
     {
