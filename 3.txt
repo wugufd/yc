@@ -1,18 +1,30 @@
 {
   "sites": [
     {
-      "key": "site1",
+      "key": "iqiyi",
       "name": "iqiyi",
       "type": 1,
       "api": "https://iqiyizyapi.com/api.php/provide/vod",
       "searchable": 1
-    }
+    },
+	{
+      "key": "yyzy",
+      "name": "iqiyi",
+      "type": 1,
+      "api": "https://api.yyzy-tv.vip/inc/apijson.php?ac=detail",
+      "searchable": 1
+    },
   ],
   "parses": [
     {
       "name": "iqiyi解析",
       "type": 1,
       "url": "https://www.iqiyizyjx.com/?url="
+    },
+	{
+      "name": "yyzy解析",
+      "type": 1,
+      "url": "https://vip.zykbf.com/?url="
     }
   ]
 }
