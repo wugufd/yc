@@ -9,7 +9,7 @@
     },
 	{
       "key": "yyzy",
-      "name": "iqiyi",
+      "name": "yyzy",
       "type": 1,
       "api": "https://api.yyzy-tv.vip/inc/apijson.php?ac=detail",
       "searchable": 1
