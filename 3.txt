@@ -67,12 +67,6 @@
       "api": "https://api.guangsuapi.com/api.php/provide/vod/josn",
       "searchable": 1
 	},{
-      "key": "",
-      "name": "",
-      "type": 1,
-      "api": "",
-      "searchable": 1
-	},{
       "key": "sdzy",
       "name": "sdzy",
       "type": 1,
