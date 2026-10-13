@@ -1,6 +1,116 @@
 {
   "sites": [
     {
+      "key": "jszyapi",
+      "name": "jszyapi",
+      "type": 1,
+      "api": "https://jszyapi.com/api.php/provide/vod",
+      "searchable": 1
+	},{
+      "key": "yayazy",
+      "name": "yayazy",
+      "type": 1,
+      "api": "https://cj.yayazy.net/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "niuniuzy",
+      "name": "niuniuzy",
+      "type": 1,
+      "api": "https://api.niuniuzy.me/api.php/provide/vod",
+      "searchable": 1
+	},{
+      "key": "wsyzy",
+      "name": "wsyzy",
+      "type": 1,
+      "api": "https://api.wsyzy.net/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "hhzy",
+      "name": "hhzy",
+      "type": 1,
+      "api": "https://hhzyapi.com/api.php/provide/vod",
+      "searchable": 1
+	},{
+      "key": "mdzy",
+      "name": "mdzy",
+      "type": 1,
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "maotai",
+      "name": "maotai",
+      "type": 1,
+      "api": "https://caiji.maotai999.vip/api.php/provide/vod/at/josn/",
+      "searchable": 1
+	},{
+      "key": "dytt",
+      "name": "dytt",
+      "type": 1,
+      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "kuaiche",
+      "name": "kuaiche",
+      "type": 1,
+      "api": "https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "hongniu",
+      "name": "hongniu",
+      "type": 1,
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod/at/josn/",
+      "searchable": 1
+	},{
+      "key": "guangsu",
+      "name": "guangsu",
+      "type": 1,
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/josn",
+      "searchable": 1
+	},{
+      "key": "",
+      "name": "",
+      "type": 1,
+      "api": "",
+      "searchable": 1
+	},{
+      "key": "sdzy",
+      "name": "sdzy",
+      "type": 1,
+      "api": "https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "yhzy",
+      "name": "yhzy",
+      "type": 1,
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "uk",
+      "name": "uk",
+      "type": 1,
+      "api": "https://api.ukuapi88.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "wujin",
+      "name": "wujin",
+      "type": 1,
+      "api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},{
+      "key": "lzcaiji",
+      "name": "lzcaiji",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/actor/",
+      "searchable": 1
+	},
+	{
+      "key": "bdzy",
+      "name": "bdzy",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1
+	},
+	{
       "key": "iqiyi",
       "name": "iqiyi",
       "type": 1,
@@ -18,6 +128,75 @@
   ],
   "parses": [
     {
+      "name": "jszyapi解析",
+      "type": 1,
+      "url": "https://jisuzyjx.com/play/?url="
+    },{
+      "name": "yayazy解析",
+      "type": 1,
+      "url": "https://jx.yayazy.cc/m3u8/?url="
+    },{
+      "name": "niuniuzy解析",
+      "type": 1,
+      "url": "https://jiexi.niuniuzy.org/m3u8/?url="
+    },{
+      "name": "wsyzy解析",
+      "type": 1,
+      "url": "https://wsyzy.vip/m3u8/?url="
+    },{
+      "name": "hhzy解析",
+      "type": 1,
+      "url": "https://hhzyjiexi.com/play/?url="
+    },{
+      "name": "mdzy解析",
+      "type": 1,
+      "url": "https://www.modujiexi66.com/?url="
+    },{
+      "name": "maotai解析",
+      "type": 1,
+      "url": "https://maotai888.vip:966/?url="
+    },{
+      "name": "dytt解析",
+      "type": 1,
+      "url": "https://vod.dyttjiexi.com/?url="
+    },{
+      "name": "kuaiche解析",
+      "type": 1,
+      "url": "https://jiexi.kuaichezy.info/m3u8/?url="
+    },{
+      "name": "hongniu解析",
+      "type": 1,
+      "url": "https://www.hnjiexi.com/m3u8/?url="
+    },{
+      "name": "guangsu解析",
+      "type": 1,
+      "url": "https://www.gszyv.com/m3u8/?url="
+    },{
+      "name": "sdzy解析",
+      "type": 1,
+      "url": "https://www.shankubf.com/m3u8/?url="
+    },{
+      "name": "yhzy解析",
+      "type": 1,
+      "url": "https://jx.yhzybf.com/player/jx.php?url="
+    },{
+      "name": "uk解析",
+      "type": 1,
+      "url": "https://api.ukubf.com/m3u8/?url="
+    },{
+      "name": "wujin解析",
+      "type": 1,
+      "url": "https://jx.xllmcms.com/dplayer/?url="
+    },{
+      "name": "lzcaiji解析",
+      "type": 1,
+      "url": "https://lziplayer.com/?url="
+    },{
+      "name": "bdzy解析",
+      "type": 1,
+      "url": "https://jx.jxbdzyw.com/m3u8/?url="
+    },
+	{
       "name": "iqiyi解析",
       "type": 1,
       "url": "https://www.iqiyizyjx.com/?url="
