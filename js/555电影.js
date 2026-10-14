@@ -11,7 +11,9 @@ var rule = {
         'User-Agent': 'MOBILE_UA'
     },
     timeout: 5000,
-    class_parse: '.navbar-items li:gt(0):lt(8);a&&Text;a&&href;.*/(.*?).html',
+    //class_parse: '.navbar-items li:gt(0):lt(8);a&&Text;a&&href;.*/(.*?).html',
+    class_name: 'Netflix&电影&连续剧&动漫&综艺纪录',
+    class_url: '/label/netflix.html&1&2&4&3',
     play_parse: true,
     lazy: `js:
         let html = request(input);
