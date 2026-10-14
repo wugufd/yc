@@ -11,7 +11,7 @@ var rule = {
         'User-Agent': 'MOBILE_UA'
     },
     timeout: 5000,
-    class_parse: '.navbar-items li:gt(0):lt(7);a&&Text;a&&href;.*/(.*?).html',
+    class_parse: '.navbar-items li:gt(0):lt(8);a&&Text;a&&href;.*/(.*?).html',
     play_parse: true,
     lazy: `js:
         let html = request(input);
