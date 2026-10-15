@@ -164,6 +164,14 @@
   "ext": "./js/555电影.js",
   "searchable": 1,
   "quickSearch": 1
+}, {
+  "key": "drpy_js_毒舌电影",
+  "name": "毒舌电影",
+  "type": 3,
+  "api": "./lib/drpy2.min.js",
+  "ext": "./js/dushe_rule.js",
+  "searchable": 1,
+  "quickSearch": 1
 }
   ],
   "parses": [
