@@ -178,9 +178,12 @@ var rule = {
     // 播放页 HTML 里，gogogo() 函数里直接写死了 playSource.src
     lazy: `js:
     let html = request(input);
+    
+    // ★ 诊断：把关键信息写进 input，TVBox 会在播放器标题栏显示
+    let debugInfo = '长度:' + html.length;
     if (html.indexOf('Protected by cdndefend') !== -1) {
-        console.log('[毒舌] 播放页被盾拦，尝试过盾...');
-        // 复用预处理的过盾逻辑
+        debugInfo += ' 被盾拦';
+        // 尝试过盾
         let ch = request(HOST + '/');
         let am = ch.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
         if (am) {
@@ -194,16 +197,33 @@ var rule = {
             }
             if(found){
                 rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
+                debugInfo += ' 过盾OK';
+            } else {
+                debugInfo += ' 过盾失败';
             }
         }
         html = request(input);
+        debugInfo += ' 新长度:' + html.length;
+    } else {
+        debugInfo += ' 无盾';
     }
+    
+    // ★ 尝试匹配 m3u8
     let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
     if (m) {
         input = m[1];
+        debugInfo += ' 匹配成功';
     } else {
         let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
-        if (m2) input = m2[1];
+        if (m2) {
+            input = m2[1];
+            debugInfo += ' 备选成功';
+        } else {
+            debugInfo += ' 匹配失败';
+        }
     }
+    
+    // ★ 把诊断信息拼到 input 后面，TVBox 可能会显示
+    input = input + '#' + debugInfo;
 `
 };
