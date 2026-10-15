@@ -69,9 +69,9 @@ var rule = {
         // ★ 诊断用：无论是否解析成功，都先把关键信息显示出来
         d.push({
             vod_id: 'debug',
-            vod_name: '[诊断] 页面长度:' + html.length,
+            vod_name: '[诊断] ' + html.substring(0, 200).replace(/\\s+/g, ' '),
             vod_pic: '',
-            vod_remarks: 'v-item数量:' + items.length + ' 分类:' + cate
+            vod_remarks: '长度:' + html.length
         });
         items.forEach(function(it) {
             let href = pd(it, 'a&&href', HOST);
