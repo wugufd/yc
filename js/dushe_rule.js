@@ -2,7 +2,7 @@ var rule = {
     title: '毒舌电影',
     host: 'https://www.dushe05.com',
     homeUrl: '/',
-    url: '/channel/fyclass.html',
+    url: '',
     searchUrl: '/search?k=**&t=',
     searchable: 2,
     quickSearch: 0,
@@ -12,95 +12,6 @@ var rule = {
         'Referer': 'https://www.dushe05.com/'
     },
     timeout: 30000,
-    class_name: '电影&连续剧&动漫&综艺纪录&短剧&今日更新',
-    class_url: '1&2&3&4&6&new',
-
-    // ============ 首页推荐 ============
-    推荐: `js:
-        let html = request(HOST + '/');
-        console.log('[毒舌] 首页长度: ' + html.length);
-        console.log('[毒舌] 首页 v-item 数量: ' + pdfa(html, 'a.v-item').length);
-        let d = [];
-        let items = pdfa(html, 'a.v-item');
-        items.forEach(function(it) {
-            let href = pd(it, 'a&&href', HOST);
-            if (!href || href.indexOf('/detail/') === -1) return;
-            // 标题：跳过水印，取真正的标题
-            let titles = pdfa(it, '.v-item-title');
-            let title = '';
-            for (let t = 0; t < titles.length; t++) {
-                let tx = pdfh(titles[t], '&&Text').trim();
-                if (tx && tx.indexOf('可可影视') === -1 && tx.indexOf('kekys') === -1) {
-                    title = tx; break;
-                }
-            }
-            // 封面：取第二张图（第一张是占位图）
-            let imgs = pdfa(it, 'img.lazyload');
-            let pic = '';
-            for (let g = 0; g < imgs.length; g++) {
-                let u = pd(imgs[g], 'img&&data-original', HOST);
-                if (u && u.indexOf('placeholder') === -1) { pic = u; break; }
-            }
-            let note = pdfh(it, '.v-item-bottom&&Text').trim();
-            d.push({
-                vod_id: href,
-                vod_name: title,
-                vod_pic: pic,
-                vod_remarks: note
-            });
-        });
-        VODS = d;
-    `,
-
-    // ============ 一级分类 ============
-    一级: `js:
-        let cate = MY_CATE;
-        let pageUrl;
-        if (cate === 'new') {
-            pageUrl = HOST + '/label/new.html';
-        } else {
-            pageUrl = HOST + '/channel/' + cate + '.html';
-        }
-        let html = request(pageUrl);
-        console.log('[毒舌] 分类页面长度: ' + html.length);
-        console.log('[毒舌] 分类 v-item 数量: ' + pdfa(html, 'a.v-item').length);
-        let d = [];
-        let items = pdfa(html, 'a.v-item');
-        // ★ 诊断用：无论是否解析成功，都先把关键信息显示出来
-        d.push({
-            vod_id: 'debug',
-            vod_name: '[诊断] ' + html.substring(0, 200).replace(/\\s+/g, ' '),
-            vod_pic: '',
-            vod_remarks: '长度:' + html.length
-        });
-        items.forEach(function(it) {
-            let href = pd(it, 'a&&href', HOST);
-            if (!href || href.indexOf('/detail/') === -1) return;
-            let titles = pdfa(it, '.v-item-title');
-            let title = '';
-            for (let t = 0; t < titles.length; t++) {
-                let tx = pdfh(titles[t], '&&Text').trim();
-                if (tx && tx.indexOf('可可影视') === -1 && tx.indexOf('kekys') === -1) {
-                    title = tx; break;
-                }
-            }
-            let imgs = pdfa(it, 'img.lazyload');
-            let pic = '';
-            for (let g = 0; g < imgs.length; g++) {
-                let u = pd(imgs[g], 'img&&data-original', HOST);
-                if (u && u.indexOf('placeholder') === -1) { pic = u; break; }
-            }
-            let note = pdfh(it, '.v-item-bottom&&Text').trim();
-            d.push({
-                vod_id: href,
-                vod_name: title,
-                vod_pic: pic,
-                vod_remarks: note
-            });
-        });
-        
-        VODS = d;
-    `,
 
     // ============ 二级详情 ============
     二级: {
