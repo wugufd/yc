@@ -15,6 +15,52 @@ var rule = {
     class_name: '电影&连续剧&动漫&综艺纪录&短剧&今日更新',
     class_url: '1&2&3&4&6&new',
 
+    // ============ 预处理：自动抓 Cookie 过 cdndefend 盾 ============
+    预处理: `js:
+        // 1. 请求首页，触发 CDN 盾
+        let html = request(HOST + '/');
+        
+        // 2. 如果遇到 cdndefend 挑战
+        if (html.indexOf('Protected by cdndefend') !== -1) {
+            console.log('[毒舌] 检测到 cdndefend，开始过盾...');
+            
+            // 3. 提取混淆的字符串数组
+            let arrMatch = html.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
+            if (arrMatch) {
+                let items = [];
+                arrMatch[1].replace(/'([^']*)'/g, function(_, s){ items.push(s); });
+                
+                // 4. 旋转数组（旋转次数可能随脚本更新而变）
+                for (let i = 0; i < 0x178; i++) items.push(items.shift());
+                
+                let key = items[2];
+                let n1 = parseInt(key[0], 16);
+                let found = null;
+                
+                // 5. 暴力搜索满足条件的字符串
+                for (let i = 0; i < 500000; i++) {
+                    let h = CryptoJS.SHA1(key + i).toString();
+                    if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
+                        parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
+                        found = key + i; break;
+                    }
+                }
+                
+                // 6. 把算出来的 cookie 写入 headers
+                if (found) {
+                    rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
+                    console.log('[毒舌] 过盾成功，Cookie: ' + rule.headers['Cookie']);
+                } else {
+                    console.log('[毒舌] 过盾失败，未找到满足条件的字符串');
+                }
+            } else {
+                console.log('[毒舌] 过盾失败，未找到挑战数组');
+            }
+        } else {
+            console.log('[毒舌] 无需过盾，直接访问');
+        }
+    `,
+
     // ============ 首页推荐 ============
     推荐: `js:
         let html = request(HOST + '/');
@@ -23,7 +69,7 @@ var rule = {
         items.forEach(function(it) {
             let href = pd(it, 'a&&href', HOST);
             if (!href || href.indexOf('/detail/') === -1) return;
-            // 标题：跳过水印，取真正的标题
+            // 标题：跳过水印
             let titles = pdfa(it, '.v-item-title');
             let title = '';
             for (let t = 0; t < titles.length; t++) {
@@ -32,7 +78,7 @@ var rule = {
                     title = tx; break;
                 }
             }
-            // 封面：取第二张图（第一张是占位图）
+            // 封面：跳过占位图
             let imgs = pdfa(it, 'img.lazyload');
             let pic = '';
             for (let g = 0; g < imgs.length; g++) {
@@ -102,15 +148,21 @@ var rule = {
 
     // ============ 搜索 ============
     搜索: `js:
-        // 搜索需要先请求首页拿 t 参数
+        // 先请求首页拿 t 参数
         let homeHtml = request(HOST + '/');
         let tMatch = homeHtml.match(/name="t"\\s+value="([^"]+)"/);
         let t = tMatch ? tMatch[1] : '';
+        
         let searchUrl = HOST + '/search?k=' + encodeURIComponent(KEY) + '&t=' + encodeURIComponent(t);
+        console.log('[毒舌] 搜索 URL: ' + searchUrl);
+        
         let html = request(searchUrl);
+        console.log('[毒舌] 搜索页长度: ' + html.length);
+        
         let d = [];
-        // 搜索结果页的卡片是 .search-result-item
         let items = pdfa(html, '.search-result-item');
+        console.log('[毒舌] 搜索结果数量: ' + items.length);
+        
         items.forEach(function(it) {
             let href = pd(it, 'a&&href', HOST);
             if (!href || href.indexOf('/detail/') === -1) return;
@@ -130,12 +182,14 @@ var rule = {
     // ============ 播放解析 ============
     lazy: `js:
         let html = request(input);
-        // 播放页地址通常在 window.__NUXT__ 或 script 变量里
+        console.log('[毒舌] 播放页长度: ' + html.length);
+        
         let m = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
+        console.log('[毒舌] m3u8 匹配: ' + (m ? m[0] : '未匹配'));
+        
         if (m) {
             input = m[0];
         } else {
-            // 备选：从 player_aaaa 或类似变量里提取
             let m2 = html.match(/url\\s*:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
             if (m2) input = m2[1];
         }
