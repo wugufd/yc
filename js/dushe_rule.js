@@ -177,16 +177,33 @@ var rule = {
     // ============ 播放解析 ============
     // 播放页 HTML 里，gogogo() 函数里直接写死了 playSource.src
     lazy: `js:
-        let html = request(input);
-
-        // 优先匹配 playSource 里的 src
-        let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
-        if (m) {
-            input = m[1];
-        } else {
-            // 备选：直接找 m3u8 直链
-            let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
-            if (m2) input = m2[1];
+    let html = request(input);
+    if (html.indexOf('Protected by cdndefend') !== -1) {
+        console.log('[毒舌] 播放页被盾拦，尝试过盾...');
+        // 复用预处理的过盾逻辑
+        let ch = request(HOST + '/');
+        let am = ch.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
+        if (am) {
+            let items = [];
+            am[1].replace(/'([^']*)'/g, function(_,s){items.push(s);});
+            for (let i=0;i<0x178;i++) items.push(items.shift());
+            let key = items[2], n1 = parseInt(key[0],16), found=null;
+            for (let i=0;i<500000;i++){
+                let h = CryptoJS.SHA1(key+i).toString();
+                if(parseInt(h.substr(n1*2,2),16)===0xb0 && parseInt(h.substr(n1*2+2,2),16)===0x0b){found=key+i;break;}
+            }
+            if(found){
+                rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
+            }
         }
-    `
+        html = request(input);
+    }
+    let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
+    if (m) {
+        input = m[1];
+    } else {
+        let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
+        if (m2) input = m2[1];
+    }
+`
 };
