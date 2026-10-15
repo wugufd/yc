@@ -66,6 +66,13 @@ var rule = {
         console.log('[毒舌] 分类 v-item 数量: ' + pdfa(html, 'a.v-item').length);
         let d = [];
         let items = pdfa(html, 'a.v-item');
+        // ★ 诊断用：无论是否解析成功，都先把关键信息显示出来
+        d.push({
+            vod_id: 'debug',
+            vod_name: '[诊断] 页面长度:' + html.length,
+            vod_pic: '',
+            vod_remarks: 'v-item数量:' + items.length + ' 分类:' + cate
+        });
         items.forEach(function(it) {
             let href = pd(it, 'a&&href', HOST);
             if (!href || href.indexOf('/detail/') === -1) return;
@@ -91,6 +98,7 @@ var rule = {
                 vod_remarks: note
             });
         });
+        
         VODS = d;
     `,
 
