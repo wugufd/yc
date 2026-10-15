@@ -18,6 +18,8 @@ var rule = {
     // ============ 首页推荐 ============
     推荐: `js:
         let html = request(HOST + '/');
+        console.log('[毒舌] 首页长度: ' + html.length);
+        console.log('[毒舌] 首页 v-item 数量: ' + pdfa(html, 'a.v-item').length);
         let d = [];
         let items = pdfa(html, 'a.v-item');
         items.forEach(function(it) {
@@ -60,6 +62,8 @@ var rule = {
             pageUrl = HOST + '/channel/' + cate + '.html';
         }
         let html = request(pageUrl);
+        console.log('[毒舌] 分类页面长度: ' + html.length);
+        console.log('[毒舌] 分类 v-item 数量: ' + pdfa(html, 'a.v-item').length);
         let d = [];
         let items = pdfa(html, 'a.v-item');
         items.forEach(function(it) {
@@ -107,7 +111,10 @@ var rule = {
         let tMatch = homeHtml.match(/name="t"\\s+value="([^"]+)"/);
         let t = tMatch ? tMatch[1] : '';
         let searchUrl = HOST + '/search?k=' + encodeURIComponent(KEY) + '&t=' + encodeURIComponent(t);
+        console.log('[毒舌] 搜索 URL: ' + searchUrl);
         let html = request(searchUrl);
+        console.log('[毒舌] 搜索页长度: ' + html.length);
+        console.log('[毒舌] 搜索结果数量: ' + pdfa(html, '.search-result-item').length);
         let d = [];
         // 搜索结果页的卡片是 .search-result-item
         let items = pdfa(html, '.search-result-item');
@@ -130,8 +137,10 @@ var rule = {
     // ============ 播放解析 ============
     lazy: `js:
         let html = request(input);
+        console.log('[毒舌] 播放页长度: ' + html.length);
         // 播放页地址通常在 window.__NUXT__ 或 script 变量里
         let m = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
+        console.log('[毒舌] m3u8 匹配: ' + (m ? m[0] : '未匹配'));
         if (m) {
             input = m[0];
         } else {
