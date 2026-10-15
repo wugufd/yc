@@ -11,7 +11,7 @@ var rule = {
         'User-Agent': 'MOBILE_UA',
         'Referer': 'https://555k27.com/'
     },
-    timeout: 10000,
+    timeout: 30000,
     class_name: 'Netflix&电影&连续剧&动漫&综艺纪录',
     class_url: '/label/netflix.html&1&2&4&3',
 
