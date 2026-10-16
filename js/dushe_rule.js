@@ -177,7 +177,7 @@ var rule = {
     // ============ 播放解析 ============
     lazy: `js:
         // ★ 硬编码你手动获取的 Cookie 值（会过期，但能临时用）
-        let cookie = 'cdndefend_js_cookie=你手动获取的值';
+        let cookie = 'cdndefend_js_cookie=1624E4B40D8AC7D3CED5B2D34E0DA7DFCA45860F1658';
         let html = request(input, { headers: { 'Cookie': cookie } });
 
         let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
