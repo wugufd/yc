@@ -1,4 +1,5 @@
-// viprs4.cc drpy 规则 v7 稳定版
+// viprs4.cc drpy 规则 v8 修复版
+// 修复 v7 模板字符串反斜杠转义层数错误导致整个 rule 解析失败、分类/搜索消失的问题
 // 实测验证：
 //   - 裸分类URL（/dianying.html等）无PoW，返回190KB+24张卡片
 //   - 带?参数的翻页/搜索会触发PoW，内置SHA1求解器自动过验
@@ -7,6 +8,7 @@
 //   - 集数URL格式：/movie|tv/{hex}/{vid}.html?origin=xxx&p=N（N从0开始）
 //   - 播放页 xg_video_player_doc.aa.url = /api/m3u8?origin=xxx&url=xxx，302跳转box域名
 // 适配 TVBox / 猫影视 / 影视仓 / zyplayer / drpy T1 等
+
 var rule = {
     title: '韩剧网(viprs4)',
     host: 'https://viprs4.cc',
@@ -16,6 +18,7 @@ var rule = {
     searchable: 2,
     quickSearch: 0,
     filterable: 0,
+    play_parse: true,
     headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Referer': 'https://viprs4.cc/'
@@ -50,8 +53,7 @@ var rule = {
         var html='';
         for(var t=0;t<5;t++){
             html=request(url,{headers:rule.headers,withHeaders:1});
-            // request 返回 {body, headers} 结构时取body
-            var raw = (typeof html === 'object') ? (html.body || '') : html;
+            var raw = (typeof html === 'object') ? (html.body || '') : (html || '');
             if(raw.indexOf('正在检测')<0) return raw;
             var mh=raw.match(/var hash = '([0-9a-f]+)'/);
             var mt=raw.match(/var target = '([0-9a-f]+)'/);
@@ -63,14 +65,12 @@ var rule = {
             if(url.indexOf('attack_key=')>=0) url=url.replace(/([?&])attack_key=[^&]*/,'$1attack_key='+key);
             else url=url+sep+'attack_key='+key;
         }
-        return (typeof html==='object')?(html.body||''):html;
+        return (typeof html==='object')?(html.body||''):(html||'');
     },
 
     // ========== 卡片解析（实测命中24/24） ==========
-    // 卡片：<a href="/movie|tv/{hex}-{vid}.html" ... title="片名" data-url="..."><img ... data-src="/img/id/xxx.jpg">...<div class="...bg-[#409EFF]/90...">角标</div>
     _cards: function(html) {
         var list=[];
-        // 先整对抓 <a 属性块>内部</a>，要求 href 指向详情页、带title、内部有<img data-src>
         var re=/<a\s+([^>]*?\bhref="(\/(?:movie|tv)\/[a-f0-9]+-\d+\.html)"[^>]*)>([\s\S]*?)<\/a>/gi;
         var m, seen={};
         while((m=re.exec(html))!==null){
@@ -83,7 +83,6 @@ var rule = {
             var name=tMatch[1].trim();
             var pic=iMatch[1];
             if(pic.indexOf('http')!==0) pic=rule.host.replace(/\/$/,'')+pic;
-            // 角标：top-2 right-2 的蓝色小div，或body里第一个非空的<div>块（站点是Tailwind动态class）
             var note='';
             var nm=body.match(/<div[^>]*>([^<>]{1,30})<\/div>/);
             if(nm){
@@ -96,16 +95,14 @@ var rule = {
     },
 
     _pagecount: function(html) {
-        // 找分页链接里最大的 page=N 值，+1 后返回（page从0计）
         var max=0;
         var pRe=/[?&]page=(\d+)/g, pm;
         while((pm=pRe.exec(html))!==null){
             var n=parseInt(pm[1]);
             if(n>max) max=n;
         }
-        // 兜底：有"下一页"但没数字链接时至少有2页
         var pc=(max>0)?(max+1):1;
-        if(pc>10000) pc=10000;
+        if(pc>5000) pc=5000;
         return pc;
     },
 
@@ -114,7 +111,6 @@ var rule = {
         var html = rule._fetch(rule.host + rule.homeUrl);
         var data = [];
 
-        // 顶部大轮播热播（swiper区块内的卡片）
         var swIdx = html.indexOf('swiper-wrapper');
         if (swIdx >= 0) {
             var swEnd = html.indexOf('swiper-pagination', swIdx);
@@ -124,7 +120,6 @@ var rule = {
             if (swList.length >= 4) data.push({type_name:'正在热播', vod_list:swList.slice(0,8)});
         }
 
-        // 按 h2 标题切分区域
         var secIdx = [], m;
         var h2Re = /<h2[^>]*>([\\s\\S]*?)<\\/h2>/gi;
         while ((m = h2Re.exec(html)) !== null) {
@@ -139,7 +134,6 @@ var rule = {
             if (l.length >= 4) data.push({type_name:secIdx[i].name, vod_list:l.slice(0,12)});
         }
 
-        // 兜底：如果上面分区没取到数据，把页面所有卡片直接塞一个"最新"区
         if (data.length === 0) {
             var all = rule._cards(html);
             if (all.length > 0) data.push({type_name:'最新影片', vod_list:all.slice(0,24)});
@@ -148,8 +142,6 @@ var rule = {
     `,
 
     // ========== 一级分类页 ==========
-    // tid = "dianying.html" / "dianshiju.html" / ...（来自class_url）
-    // 第1页直接访问裸URL（无PoW），第N页访问 /xxx.html?page=N-1（需过PoW）
     一级: `js:
         var tid = input.tid;
         var pg = input.page || 1;
@@ -158,7 +150,6 @@ var rule = {
         var html = rule._fetch(url);
         var list = rule._cards(html);
         var pagecount = rule._pagecount(html);
-        // 第1页拿到卡片但没解析到页码时，默认给一个较大值保证可翻页
         if (pg === 1 && list.length >= 24 && pagecount <= 1) pagecount = 999;
         setResult({
             page: pg,
@@ -176,7 +167,6 @@ var rule = {
         var url = rule.host + '/s.html?name=' + encodeURIComponent(wd) + '&page=' + (pg - 1);
         var html = rule._fetch(url);
         var list = rule._cards(html);
-        // 搜索页也可能有其他类型链接(演员、标签)，_cards只取movie/tv详情链接无需担心
         setResult({
             page: pg,
             pagecount: (list.length >= 24) ? (pg + 1) : pg,
@@ -187,15 +177,11 @@ var rule = {
     `,
 
     // ========== 详情页（二级） ==========
-    // cid 形如 /movie/68aecc1b...-17632.html
-    // 详情页能看到当前线路的集数；其它线路切换URL形如 同路径?origin=xxx（-数字.html，不是/数字/）
-    // 集数URL形如 /movie/{hex}/{vid}.html?origin=xxx&p=N（斜杠，不是横杠）
     二级: `js:
         var cid = input.url;
         var host = rule.host;
         var html = rule._fetch(host + cid);
 
-        // 标题
         var vod_name = '';
         var hm = html.match(/<h1[^>]*>([\\s\\S]*?)<\\/h1>/);
         if (hm) vod_name = hm[1].replace(/<[^>]+>/g,'').trim();
@@ -204,31 +190,24 @@ var rule = {
             if (tm) vod_name = tm[1].split(/[-_|《]/)[0].trim();
         }
 
-        // 海报
         var vod_pic = '';
-        var pm = html.match(/<img[^>]*data-src="(\/img\/id\/[a-f0-9]+\.jpg)"[^>]*>/);
+        var pm = html.match(/<img[^>]*data-src="(\\/img\\/id\\/[a-f0-9]+\\.jpg)"[^>]*>/);
         if (pm) vod_pic = host + pm[1];
 
-        // 简介
         var vod_content = '';
         var dm = html.match(/<meta\\s+name="description"\\s+content="([^"]+)"/);
         if (dm) vod_content = dm[1];
 
-        // 主演
         var vod_actor = '';
         var am = html.match(/主演[：:]?([^<]{2,80})/);
         if (am) vod_actor = am[1].replace(/^[：: ]+/,'').trim();
 
-        // 导演
         var vod_director = '';
         var ad = html.match(/导演[：:]?([^<]{2,40})/);
         if (ad) vod_director = ad[1].replace(/^[：: ]+/,'').trim();
 
-        // 抽取某段html里 所有 origin 下的集数
-        // 集数 a: href="/(movie|tv)/{hex}/{vid}.html?origin=xxx&p=N" 文本是"01"/"1080P"等
         function extractEps(h) {
             var out = {};
-            // 先抓所有带 &p= 数字 且 href 不是下载/ep_list 的a标签
             var epRe = /<a[^>]*\\bhref="([^"]*(?:movie|tv)\\/[a-f0-9]+\\/\\d+\\.html\\?[^"]*\\borigin=([^"&]+)[^"]*\\bp=(\\d+)[^"]*)"[^>]*>([\\s\\S]*?)<\\/a>/gi;
             var em;
             while ((em = epRe.exec(h)) !== null) {
@@ -236,17 +215,13 @@ var rule = {
                 var ori = decodeURIComponent(em[2]);
                 var p = parseInt(em[3]);
                 var text = em[4].replace(/<[^>]+>/g,'').trim();
-                // 过滤"下载""标题""倒序"这些不是集数的按钮
                 if (/下载|标题|倒序/.test(text)) continue;
                 if (href.indexOf('http') !== 0) href = host + href;
                 var epName = text;
-                // 如果文本是纯数字"01""02" 或数字，补"第N集"
                 if (/^\\d+$/.test(text)) epName = '第' + parseInt(text) + '集';
                 if (!out[ori]) out[ori] = {};
-                // p=0 对应第1集，但drpy内部靠顺序区分，key用p保证不重复
                 out[ori][p] = epName + '$' + href;
             }
-            // 整理成数组，按p升序
             var res = {};
             for (var k in out) {
                 var keys = [];
@@ -260,9 +235,7 @@ var rule = {
 
         var allEps = extractEps(html);
 
-        // 找所有线路切换链接：href="/xxx-xxx.html?origin=线路名"
-        // 注意是 -数字.html（详情页形式），不是 /数字/（播放页形式）
-        var oRe = /href="(\/(?:movie|tv)\/[a-f0-9]+-\d+\.html\\?origin=([^"&]+))"/g;
+        var oRe = /href="(\\/(?:movie|tv)\\/[a-f0-9]+-\\d+\\.html\\?origin=([^"&]+))"/g;
         var om, originLinks = {};
         while ((om = oRe.exec(html)) !== null) {
             var oname = decodeURIComponent(om[2]);
@@ -272,7 +245,6 @@ var rule = {
             }
         }
 
-        // 逐个线路请求详情页，拿对应线路的集数
         for (var oname in originLinks) {
             try {
                 var oh = rule._fetch(host + originLinks[oname]);
@@ -283,12 +255,9 @@ var rule = {
             } catch(e) {}
         }
 
-        // 兜底：如果所有线路都没集数（电影只有1个播放入口，详情页直接就一个"立即播放"），
-        // 构造一条默认线路"超级线路"，URL使用详情页本身加上?p=0，让lazy去解析
         var hasAny = false;
         for (var k in allEps) { if (allEps[k].length > 0) { hasAny = true; break; } }
         if (!hasAny) {
-            // 从 /movie/xxx-yyy.html 推出播放URL /movie/xxx/yyy.html?origin=超级线路&p=0
             var m2 = cid.match(/\\/(movie|tv)\\/([a-f0-9]+)-(\\d+)\\.html/);
             if (m2) {
                 var playUrl = host + '/' + m2[1] + '/' + m2[2] + '/' + m2[3] + '.html?origin=' + encodeURIComponent('超级线路') + '&p=0';
@@ -296,7 +265,6 @@ var rule = {
             }
         }
 
-        // 拼成drpy格式
         var playFrom = [], playUrlParts = [];
         for (var ori in allEps) {
             if (allEps[ori].length > 0) {
@@ -319,26 +287,20 @@ var rule = {
     `,
 
     // ========== 播放解析（lazy） ==========
-    // 访问集数URL，从 xg_video_player_doc.aa 里取 /api/m3u8?... 接口，返回给播放器
-    // 该接口会302到 box.dyrs.com.de 再返回m3u8，交给播放器跟随重定向即可
     lazy: `js:
         var playUrl = (typeof input === 'object') ? input.url : input;
         var html = rule._fetch(playUrl);
         if (typeof html === 'object') html = html.body || '';
-        // 匹配: aa: JSON.parse('{...}')  —— key无引号，值用JSON.parse包裹
         var m = html.match(/aa\\s*:\\s*JSON\\.parse\\('([\\s\\S]*?)'\\)/);
         if (m) {
             try {
-                // 处理JS字符串里的 unicode 和转义
                 var raw = m[1]
                     .replace(/\\\\u0022/g,'"')
                     .replace(/\\\\u0026/g,'&')
                     .replace(/\\\\u002F/g,'/')
                     .replace(/\\\\\\//g,'/')
-                    .replace(/\\\\\\\\/g,'\\\\')
                     .replace(/\\\\'/g,"'")
                     .replace(/\\\\"/g,'"');
-                // 再处理一层 \uXXXX
                 raw = raw.replace(/\\\\u([0-9a-fA-F]{4})/g, function(_,h){
                     return String.fromCharCode(parseInt(h,16));
                 });
@@ -358,7 +320,6 @@ var rule = {
                 print('lazy解析失败: ' + e);
             }
         } else {
-            // 兜底：直接在html里找 /api/m3u8?... 字符串
             var m2 = html.match(/(\\/api\\/m3u8\\?[^"'\\s<>]+)/);
             if (m2) {
                 var api2 = m2[1].replace(/&amp;/g,'&');
