@@ -24,5 +24,5 @@ var rule = {
             } catch (e) {}
         }
     `,
-    搜索: '.module-card-item;.module-card-item-title&&Text;.lazyload&&data-original;.module-item-note&&Text;a&&href'
+    搜索: '.group.relative.flex.flex-col.h-full;h3&&Text;img&&data-src;a&&href'
 };
