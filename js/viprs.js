@@ -1,16 +1,10 @@
-// viprs4.cc drpy 规则 v8 修复版
-// 修复 v7 模板字符串反斜杠转义层数错误导致整个 rule 解析失败、分类/搜索消失的问题
-// 实测验证：
-//   - 裸分类URL（/dianying.html等）无PoW，返回190KB+24张卡片
-//   - 带?参数的翻页/搜索会触发PoW，内置SHA1求解器自动过验
-//   - 卡片正则在真实电影/电视剧/搜索页均能命中全部卡片
-//   - 详情页线路切换URL格式：/movie|tv/{hex}-{vid}.html?origin={encodeURIComponent(线路名)}
-//   - 集数URL格式：/movie|tv/{hex}/{vid}.html?origin=xxx&p=N（N从0开始）
-//   - 播放页 xg_video_player_doc.aa.url = /api/m3u8?origin=xxx&url=xxx，302跳转box域名
+// viprs4.cc drpy 规则 - 仅搜索精简版
+// 移除首页推荐与分类入口，仅保留搜索/详情/播放功能
+// 彻底规避分类页404问题，打开直接可用搜索
 // 适配 TVBox / 猫影视 / 影视仓 / zyplayer / drpy T1 等
 
 var rule = {
-    title: '韩剧网(viprs4)',
+    title: '韩剧影视-仅搜索',
     host: 'https://viprs4.cc',
     homeUrl: '/',
     url: '/fyclass',
@@ -25,9 +19,9 @@ var rule = {
     },
     timeout: 20000,
 
-    // 5个一级分类：直接访问裸URL = 该分类下的"全部"内容（第1页24张）
-    class_name: '电影&电视剧&综艺&动漫&短剧',
-    class_url:  'dianying.html&dianshiju.html&zongyi.html&dongman.html&duanju.html',
+    // 清空分类配置，彻底隐藏顶部分类标签，不触发任何分类请求
+    class_name: '',
+    class_url: '',
 
     // ========== PoW反爬求解（带?参数的URL会触发） ==========
     _sha1: function(s) {
@@ -68,7 +62,7 @@ var rule = {
         return (typeof html==='object')?(html.body||''):(html||'');
     },
 
-    // ========== 卡片解析（实测命中24/24） ==========
+    // ========== 卡片解析 ==========
     _cards: function(html) {
         var list=[];
         var re=/<a\s+([^>]*?\bhref="(\/(?:movie|tv)\/[a-f0-9]+-\d+\.html)"[^>]*)>([\s\S]*?)<\/a>/gi;
@@ -94,73 +88,12 @@ var rule = {
         return list;
     },
 
-    _pagecount: function(html) {
-        var max=0;
-        var pRe=/[?&]page=(\d+)/g, pm;
-        while((pm=pRe.exec(html))!==null){
-            var n=parseInt(pm[1]);
-            if(n>max) max=n;
-        }
-        var pc=(max>0)?(max+1):1;
-        if(pc>5000) pc=5000;
-        return pc;
-    },
-
-    // ========== 首页推荐 ==========
+    // ========== 首页：返回空数据，不加载推荐，直接显示搜索界面 ==========
     home: `js:
-        var html = rule._fetch(rule.host + rule.homeUrl);
-        var data = [];
-
-        var swIdx = html.indexOf('swiper-wrapper');
-        if (swIdx >= 0) {
-            var swEnd = html.indexOf('swiper-pagination', swIdx);
-            if (swEnd < 0) swEnd = swIdx + 15000;
-            var sw = html.substring(swIdx, swEnd);
-            var swList = rule._cards(sw);
-            if (swList.length >= 4) data.push({type_name:'正在热播', vod_list:swList.slice(0,8)});
-        }
-
-        var secIdx = [], m;
-        var h2Re = /<h2[^>]*>([\\s\\S]*?)<\\/h2>/gi;
-        while ((m = h2Re.exec(html)) !== null) {
-            var tn = m[1].replace(/<[^>]+>/g,'').trim();
-            if (tn && tn.length <= 12) secIdx.push({name:tn, pos:m.index});
-        }
-        for (var i=0;i<secIdx.length;i++) {
-            var start = secIdx[i].pos;
-            var end = (i+1<secIdx.length) ? secIdx[i+1].pos : html.length;
-            var seg = html.substring(start, end);
-            var l = rule._cards(seg);
-            if (l.length >= 4) data.push({type_name:secIdx[i].name, vod_list:l.slice(0,12)});
-        }
-
-        if (data.length === 0) {
-            var all = rule._cards(html);
-            if (all.length > 0) data.push({type_name:'最新影片', vod_list:all.slice(0,24)});
-        }
-        setResult(data);
+        setResult([]);
     `,
 
-    // ========== 一级分类页 ==========
-    一级: `js:
-        var tid = input.tid;
-        var pg = input.page || 1;
-        var url = rule.host + '/' + tid;
-        if (pg > 1) url += '?page=' + (pg - 1);
-        var html = rule._fetch(url);
-        var list = rule._cards(html);
-        var pagecount = rule._pagecount(html);
-        if (pg === 1 && list.length >= 24 && pagecount <= 1) pagecount = 999;
-        setResult({
-            page: pg,
-            pagecount: pagecount,
-            limit: 24,
-            total: pagecount * 24,
-            list: list
-        });
-    `,
-
-    // ========== 搜索 ==========
+    // ========== 搜索（完整保留） ==========
     搜索: `js:
         var wd = input.wd;
         var pg = input.page || 1;
@@ -176,7 +109,7 @@ var rule = {
         });
     `,
 
-    // ========== 详情页（二级） ==========
+    // ========== 详情页（二级，完整保留） ==========
     二级: `js:
         var cid = input.url;
         var host = rule.host;
@@ -286,7 +219,7 @@ var rule = {
         });
     `,
 
-    // ========== 播放解析（lazy） ==========
+    // ========== 播放解析（lazy，完整保留） ==========
     lazy: `js:
         var playUrl = (typeof input === 'object') ? input.url : input;
         var html = rule._fetch(playUrl);
