@@ -176,60 +176,12 @@ var rule = {
 
     // ============ 播放解析 ============
     lazy: `js:
-    let html = request(input);
-    
-    // 如果播放页被 cdndefend 盾拦，执行挑战
-    if (html.indexOf('Protected by cdndefend') !== -1) {
-        console.log('[毒舌] 播放页被盾拦，执行挑战...');
-        
-        // ★ 动态从 HTML 里提取挑战参数（不要硬编码）
-        let arrMatch = html.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
-        if (arrMatch) {
-            let items = [];
-            arrMatch[1].replace(/'([^']*)'/g, function(_, s){ items.push(s); });
-            
-            // 旋转数组（0x178 次）
-            for (let i = 0; i < 0x178; i++) items.push(items.shift());
-            
-            // items[2] 就是挑战用的 key
-            let key = items[2];
-            let n1 = parseInt(key[0], 16);
-            let found = null;
-            
-            // 暴力搜索
-            for (let i = 0; i < 500000; i++) {
-                let h = CryptoJS.SHA1(key + i).toString();
-                if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
-                    parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
-                    found = key + i; break;
-                }
-            }
-            
-            if (found) {
-                rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
-                console.log('[毒舌] lazy 过盾成功');
-                html = request(input);  // 带 Cookie 重新请求
-            } else {
-                console.log('[毒舌] lazy 过盾失败');
-            }
-        } else {
-            console.log('[毒舌] lazy 未找到挑战数组');
-        }
-    }
-    
-    // ★ 从播放页 HTML 提取 m3u8 地址
-    let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
-    if (m) {
-        input = m[1];
-        console.log('[毒舌] m3u8 匹配成功');
-    } else {
-        let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
-        if (m2) {
-            input = m2[1];
-            console.log('[毒舌] m3u8 备选成功');
-        } else {
-            console.log('[毒舌] m3u8 匹配失败，页面长度: ' + html.length);
-        }
-    }
-`
+        // ★ 硬编码你手动获取的 Cookie 值（会过期，但能临时用）
+        let cookie = 'cdndefend_js_cookie=你手动获取的值';
+        let html = request(input, { headers: { 'Cookie': cookie } });
+
+        let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
+        if (m) input = m[1];
+    `
+};
 };
