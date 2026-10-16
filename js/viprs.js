@@ -95,19 +95,72 @@ var rule = {
 
     // ========== 搜索（完整保留） ==========
     搜索: `js:
-        var wd = input.wd;
-        var pg = input.page || 1;
-        var url = rule.host + '/s.html?name=' + encodeURIComponent(wd) + '&page=' + (pg - 1);
-        var html = rule._fetch(url);
-        var list = rule._cards(html);
-        setResult({
-            page: pg,
-            pagecount: (list.length >= 24) ? (pg + 1) : pg,
-            limit: 24,
-            total: 0,
-            list: list
+    let wd = KEY;
+    let pg = MY_PAGE || 1;
+
+    // ★ 第一步：检查有没有存过 sion_id
+    let sionId = getItem('sion_id', '');
+    console.log('[viprs] 已存 sion_id: ' + sionId);
+
+    // ★ 第二步：如果没有，先请求首页，从 Set-Cookie 里拿
+    if (!sionId) {
+        let homeUrl = HOST + '/';
+        let res = request(homeUrl, { withHeaders: true });
+        // res 是 JSON 字符串，包含 headers 和 body
+        try {
+            let headers = JSON.parse(res);
+            // 从 set-cookie 里提取 sion_id
+            let setCookie = headers['set-cookie'] || headers['Set-Cookie'] || '';
+            let cm = setCookie.match(/sion_id=([a-f0-9]+)/);
+            if (cm) {
+                sionId = cm[1];
+                setItem('sion_id', sionId);
+                console.log('[viprs] 获取到新 sion_id: ' + sionId);
+            }
+        } catch (e) {
+            console.log('[viprs] 解析首页 headers 失败: ' + e.message);
+        }
+    }
+
+    // ★ 第三步：拼接搜索 URL（带 sion_id 参数）
+    let url = HOST + '/s.html?name=' + encodeURIComponent(wd);
+    if (sionId) url += '&sion_id=' + sionId;
+    if (pg > 1) url += '&page=' + pg;
+
+    // ★ 第四步：请求搜索页，带上 Cookie
+    let html = request(url, {
+        headers: {
+            'Cookie': 'sion_id=' + sionId,
+            'Referer': HOST + '/'
+        }
+    });
+
+    console.log('[viprs] 搜索页长度: ' + html.length);
+    console.log('[viprs] 是否含关键字: ' + (html.indexOf(wd) !== -1));
+
+    // ★ 第五步：解析搜索结果（和你之前的逻辑一样）
+    let list = [];
+    let re = /<a\\s+([^>]*?\\bhref="(\\/(?:movie|tv)\\/[a-f0-9]+-\\d+\\.html)"[^>]*)>([\\s\\S]*?)<\\/a>/gi;
+    let m, seen = {};
+    while ((m = re.exec(html)) !== null) {
+        let attrs = m[1], href = m[2], body = m[3];
+        if (seen[href]) continue;
+        let tMatch = attrs.match(/\\btitle="([^"]+)"/);
+        let iMatch = body.match(/<img[^>]*?\\bdata-src="([^"]+)"/);
+        if (!tMatch || !iMatch) continue;
+        seen[href] = 1;
+        let name = tMatch[1].trim();
+        let pic = iMatch[1];
+        if (pic.indexOf('http') !== 0) pic = HOST + pic;
+        list.push({
+            vod_id: href,
+            vod_name: name,
+            vod_pic: pic,
+            vod_remarks: ''
         });
-    `,
+    }
+    VODS = list;
+`
 
     // ========== 详情页（二级，完整保留） ==========
     二级: `js:
