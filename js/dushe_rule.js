@@ -175,55 +175,49 @@ var rule = {
     `,
 
     // ============ 播放解析 ============
-    // 播放页 HTML 里，gogogo() 函数里直接写死了 playSource.src
     lazy: `js:
     let html = request(input);
     
-    // ★ 诊断：把关键信息写进 input，TVBox 会在播放器标题栏显示
-    let debugInfo = '长度:' + html.length;
+    // 如果播放页被 cdndefend 盾拦，执行挑战
     if (html.indexOf('Protected by cdndefend') !== -1) {
-        debugInfo += ' 被盾拦';
-        // 尝试过盾
-        let ch = request(HOST + '/');
-        let am = ch.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
-        if (am) {
-            let items = [];
-            am[1].replace(/'([^']*)'/g, function(_,s){items.push(s);});
-            for (let i=0;i<0x178;i++) items.push(items.shift());
-            let key = items[2], n1 = parseInt(key[0],16), found=null;
-            for (let i=0;i<500000;i++){
-                let h = CryptoJS.SHA1(key+i).toString();
-                if(parseInt(h.substr(n1*2,2),16)===0xb0 && parseInt(h.substr(n1*2+2,2),16)===0x0b){found=key+i;break;}
+        console.log('[毒舌] 播放页被盾拦，执行挑战...');
+        
+        // 挑战脚本的固定逻辑
+        let c = 'array';           // 从旋转后的数组中取出的 items[2]
+        let n1 = parseInt(c[0], 16); // n1 = 10
+        
+        let i = 0;
+        let found = null;
+        while (true) {
+            let h = CryptoJS.SHA1(c + i).toString(); // SHA1 十六进制字符串
+            // 检查第 n1 和第 n1+1 个字节
+            // 注意：h 是 hex 字符串，每两个字符表示一个字节
+            if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
+                parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
+                found = c + i;
+                break;
             }
-            if(found){
-                rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
-                debugInfo += ' 过盾OK';
-            } else {
-                debugInfo += ' 过盾失败';
-            }
+            i++;
+            if (i > 10000000) break; // 安全上限
         }
-        html = request(input);
-        debugInfo += ' 新长度:' + html.length;
-    } else {
-        debugInfo += ' 无盾';
+        
+        if (found) {
+            // 把 cookie 写入 headers，然后重新请求
+            rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
+            console.log('[毒舌] 过盾成功，cookie: ' + found);
+            html = request(input);
+        } else {
+            console.log('[毒舌] 过盾失败');
+        }
     }
     
-    // ★ 尝试匹配 m3u8
+    // 从播放页 HTML 里提取 m3u8 地址
     let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
     if (m) {
         input = m[1];
-        debugInfo += ' 匹配成功';
     } else {
         let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
-        if (m2) {
-            input = m2[1];
-            debugInfo += ' 备选成功';
-        } else {
-            debugInfo += ' 匹配失败';
-        }
+        if (m2) input = m2[1];
     }
-    
-    // ★ 把诊断信息拼到 input 后面，TVBox 可能会显示
-    input = input + '#' + debugInfo;
 `
 };
