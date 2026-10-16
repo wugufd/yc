@@ -183,5 +183,5 @@ var rule = {
         let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
         if (m) input = m[1];
     `
-};
+
 };
