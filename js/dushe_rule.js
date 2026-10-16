@@ -15,51 +15,7 @@ var rule = {
     class_name: '电影&连续剧&动漫&综艺纪录&短剧&今日更新',
     class_url: '1&2&3&4&6&new',
 
-    // ============ 预处理：自动过 cdndefend 盾 ============
-    预处理: `js:
-        // 1. 请求首页，触发 CDN 盾
-        let html = request(HOST + '/');
-
-        // 2. 如果遇到 cdndefend 挑战
-        if (html.indexOf('Protected by cdndefend') !== -1) {
-            console.log('[毒舌] 检测到 cdndefend，开始过盾...');
-
-            // 3. 提取混淆的字符串数组
-            let arrMatch = html.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
-            if (arrMatch) {
-                let items = [];
-                arrMatch[1].replace(/'([^']*)'/g, function(_, s){ items.push(s); });
-
-                // 4. 旋转数组（旋转次数可能随脚本更新而变）
-                for (let i = 0; i < 0x178; i++) items.push(items.shift());
-
-                let key = items[2];
-                let n1 = parseInt(key[0], 16);
-                let found = null;
-
-                // 5. 暴力搜索满足条件的字符串
-                for (let i = 0; i < 500000; i++) {
-                    let h = CryptoJS.SHA1(key + i).toString();
-                    if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
-                        parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
-                        found = key + i; break;
-                    }
-                }
-
-                // 6. 把算出来的 cookie 写入 headers
-                if (found) {
-                    rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
-                    console.log('[毒舌] 过盾成功');
-                } else {
-                    console.log('[毒舌] 过盾失败');
-                }
-            } else {
-                console.log('[毒舌] 过盾失败，未找到挑战数组');
-            }
-        } else {
-            console.log('[毒舌] 无需过盾');
-        }
-    `,
+   
 
     // ============ 首页推荐 ============
     推荐: `js:
