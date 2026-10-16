@@ -1,10 +1,10 @@
 var rule = {
     title: 'viprs4.cc',
     host: 'https://viprs4.cc',
-    searchUrl: '/vodsearch/**----------fypage---.html',
+    searchUrl: '/s.html?name=**&page=fypage',
     searchable: 2,
     quickSearch: 0,
-    filterable: 1,
+    filterable: 0,
     headers: {
         'User-Agent': 'MOBILE_UA'
     },
