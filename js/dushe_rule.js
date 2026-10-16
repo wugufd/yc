@@ -182,42 +182,54 @@ var rule = {
     if (html.indexOf('Protected by cdndefend') !== -1) {
         console.log('[毒舌] 播放页被盾拦，执行挑战...');
         
-        // 挑战脚本的固定逻辑
-        let c = 'array';           // 从旋转后的数组中取出的 items[2]
-        let n1 = parseInt(c[0], 16); // n1 = 10
-        
-        let i = 0;
-        let found = null;
-        while (true) {
-            let h = CryptoJS.SHA1(c + i).toString(); // SHA1 十六进制字符串
-            // 检查第 n1 和第 n1+1 个字节
-            // 注意：h 是 hex 字符串，每两个字符表示一个字节
-            if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
-                parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
-                found = c + i;
-                break;
+        // ★ 动态从 HTML 里提取挑战参数（不要硬编码）
+        let arrMatch = html.match(/a0_0x2a54\\s*=\\s*\\[([^\\]]+)\\]/);
+        if (arrMatch) {
+            let items = [];
+            arrMatch[1].replace(/'([^']*)'/g, function(_, s){ items.push(s); });
+            
+            // 旋转数组（0x178 次）
+            for (let i = 0; i < 0x178; i++) items.push(items.shift());
+            
+            // items[2] 就是挑战用的 key
+            let key = items[2];
+            let n1 = parseInt(key[0], 16);
+            let found = null;
+            
+            // 暴力搜索
+            for (let i = 0; i < 500000; i++) {
+                let h = CryptoJS.SHA1(key + i).toString();
+                if (parseInt(h.substr(n1*2, 2), 16) === 0xb0 &&
+                    parseInt(h.substr(n1*2+2, 2), 16) === 0x0b) {
+                    found = key + i; break;
+                }
             }
-            i++;
-            if (i > 10000000) break; // 安全上限
-        }
-        
-        if (found) {
-            // 把 cookie 写入 headers，然后重新请求
-            rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
-            console.log('[毒舌] 过盾成功，cookie: ' + found);
-            html = request(input);
+            
+            if (found) {
+                rule.headers['Cookie'] = 'cdndefend_js_cookie=' + found;
+                console.log('[毒舌] lazy 过盾成功');
+                html = request(input);  // 带 Cookie 重新请求
+            } else {
+                console.log('[毒舌] lazy 过盾失败');
+            }
         } else {
-            console.log('[毒舌] 过盾失败');
+            console.log('[毒舌] lazy 未找到挑战数组');
         }
     }
     
-    // 从播放页 HTML 里提取 m3u8 地址
+    // ★ 从播放页 HTML 提取 m3u8 地址
     let m = html.match(/src:\\s*["']([^"']+\\.m3u8[^"']*)["']/);
     if (m) {
         input = m[1];
+        console.log('[毒舌] m3u8 匹配成功');
     } else {
         let m2 = html.match(/https?:\\/\\/[^"'\\s]+\\.m3u8[^"'\\s]*/);
-        if (m2) input = m2[1];
+        if (m2) {
+            input = m2[1];
+            console.log('[毒舌] m3u8 备选成功');
+        } else {
+            console.log('[毒舌] m3u8 匹配失败，页面长度: ' + html.length);
+        }
     }
 `
 };
