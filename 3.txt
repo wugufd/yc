@@ -165,11 +165,11 @@
   "searchable": 1,
   "quickSearch": 1
 }, {
-  "key": "韩剧影视",
-  "name": "韩剧影视",
+  "key": "4K影视",
+  "name": "4K影视",
   "type": 3,
   "api": "./lib/drpy2.min.js",
-  "ext": "./js/viprs.js",
+  "ext": "./js/4kvms.js",
   "searchable": 1,
   "quickSearch": 1
 }
