@@ -5,7 +5,7 @@ var rule = {
     // 搜索：用 ?wd= 参数，站点原生支持
     
     searchUrl: '/vodsearch/**----------fypage---.html',
-    searchable: 2,
+    searchable: 1,
     quickSearch: 0,
     filterable: 0,
     headers: {
