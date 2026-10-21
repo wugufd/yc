@@ -15,8 +15,14 @@ var rule = {
     timeout: 30000,
 
     // 搜索：按飞快实际结构写，字段顺序对齐 555
-    搜索: '.module-card-item;.module-card-item-title&&Text;.module-item-pic&&img&&data-original;.module-item-note&&Text;.module-card-item-poster&&href',
-
+    搜索: `js:
+    let url = HOST + '/vodsearch/' + encodeURIComponent(KEY) + '----------' + MY_PAGE + '---.html';
+    log('请求: ' + url);
+    let html = request(url);
+    log('长度: ' + (html ? html.length : 0));
+    log('前200字符: ' + (html ? html.substring(0, 200) : '空'));
+    VODS = [{ vod_id: '/voddetail/242043.html', vod_name: '测试结果', vod_pic: '', vod_remarks: '测试' }];
+`,
     lazy: `js:
         let html = request(input);
         let url = '';
