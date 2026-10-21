@@ -3,7 +3,8 @@ var rule = {
     host: 'https://feikuai.in',
     homeUrl: '/',
     // 搜索：用 ?wd= 参数，站点原生支持
-    searchUrl: '/vodsearch/-------------.html?wd=**&page=fypage',
+    
+    searchUrl: '/vodsearch/**----------fypage---.html',
     searchable: 2,
     quickSearch: 0,
     filterable: 0,
