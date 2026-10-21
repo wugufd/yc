@@ -122,7 +122,7 @@
 ]
 	},{
       "key": "lzcaiji",
-      "name": "lzcaiji",
+      "name": "量子",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -165,8 +165,8 @@
   "searchable": 1,
   "quickSearch": 1
 }, {
-  "key": "4K影视",
-  "name": "4K影视",
+  "key": "飞快",
+  "name": "飞快",
   "type": 3,
   "api": "./lib/drpy2.min.js",
   "ext": "./js/feikuai.js",
