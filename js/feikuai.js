@@ -2,7 +2,8 @@ var rule = {
     title: '飞快TV',
     host: 'https://feikuai.in',
     homeUrl: '/',
-    searchUrl: '/vodsearch/**----------fypage---.html',
+    // 搜索：用 ?wd= 参数，站点原生支持
+    searchUrl: '/vodsearch/-------------.html?wd=**&page=fypage',
     searchable: 2,
     quickSearch: 0,
     filterable: 0,
@@ -11,24 +12,9 @@ var rule = {
         'Referer': 'https://feikuai.in/'
     },
     timeout: 30000,
-    class_name: '',
-    class_url: '',
 
-    搜索: `js:
-        let key = encodeURIComponent(KEY);
-        let url = HOST + '/vodsearch/' + key + '----------' + MY_PAGE + '---.html';
-        let html = request(url);
-        let d = [];
-        pdfa(html, '.module-card-item').forEach(it => {
-            d.push({
-                vod_name: pdfh(it, '.module-card-item-title strong&&Text'),
-                vod_pic: pd(it, '.module-item-pic&&img&&data-original', HOST),
-                vod_remarks: pdfh(it, '.module-item-note&&Text'),
-                vod_id: pd(it, '.module-card-item-poster&&href', HOST)
-            });
-        });
-        VODS = d;
-    `,
+    // 搜索：按飞快实际结构写，字段顺序对齐 555
+    搜索: '.module-card-item;.module-card-item-title a&&Text;.module-item-pic&&img&&data-original;.module-item-note&&Text;.module-card-item-poster&&href',
 
     lazy: `js:
         let html = request(input);
