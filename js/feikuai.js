@@ -2,7 +2,6 @@ var rule = {
     title: '飞快TV',
     host: 'https://feikuai.in',
     homeUrl: '/',
-    // 搜索：关键字 + 分页
     searchUrl: '/vodsearch/**----------fypage---.html',
     searchable: 2,
     quickSearch: 0,
@@ -12,21 +11,29 @@ var rule = {
         'Referer': 'https://feikuai.in/'
     },
     timeout: 30000,
-    // 只保留搜索，分类置空
     class_name: '',
     class_url: '',
 
-    // ===== 搜索 =====
-    搜索: '.module-card-item;.module-card-item-title&&Text;.module-item-pic&&img&&data-original;.module-item-note&&Text;.module-card-item-poster&&href',
+    搜索: `js:
+        let key = encodeURIComponent(KEY);
+        let url = HOST + '/vodsearch/' + key + '----------' + MY_PAGE + '---.html';
+        let html = request(url);
+        let d = [];
+        pdfa(html, '.module-card-item').forEach(it => {
+            d.push({
+                vod_name: pdfh(it, '.module-card-item-title strong&&Text'),
+                vod_pic: pd(it, '.module-item-pic&&img&&data-original', HOST),
+                vod_remarks: pdfh(it, '.module-item-note&&Text'),
+                vod_id: pd(it, '.module-card-item-poster&&href', HOST)
+            });
+        });
+        VODS = d;
+    `,
 
-    // ===== 播放解析（lazy）=====
-    // 优先从 player_aaaa 解析（encrypt=2: base64 -> unescape）
-    // 失败则回退到页面内嵌的 #fk-online-download-data JSON
     lazy: `js:
         let html = request(input);
         let url = '';
 
-        // 方案一：player_aaaa
         let m = html.match(/var player_aaaa\\s*=\\s*(\\{.*?\\})\\s*<\\/script>/s);
         if (m) {
             try {
@@ -35,13 +42,10 @@ var rule = {
                 let enc = Number(data.encrypt) || 0;
                 if (enc === 2) url = base64Decode(url);
                 if (enc === 1 || enc === 2) url = unescape(url);
-                if (url && !/^https?:/.test(url) && url.indexOf('//') === 0) {
-                    url = 'https:' + url;
-                }
+                if (url && url.indexOf('//') === 0) url = 'https:' + url;
             } catch (e) { url = ''; }
         }
 
-        // 方案二：内嵌下载 JSON（更可靠）
         if (!url || !/\\.m3u8|\\.mp4/.test(url)) {
             let m2 = html.match(/id="fk-online-download-data">([\\s\\S]*?)<\\/script>/);
             if (m2) {
