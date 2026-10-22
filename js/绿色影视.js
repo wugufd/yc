@@ -33,7 +33,7 @@ var rule = {
         img: '.myui-content__thumb .lazyload&&data-original',
         desc: '.sketch&&Text',
         tabs: '.nav-tabs:eq(0) li a[href^="#playlist"]',
-        lists: '#fyid ul li a'
+        lists: '.tab-content .tab-pane:eq(#id) ul li a'
     },
     搜索: '#searchList li;h4.title a&&Text;.thumb a&&data-original;;.thumb a&&href',
     img: ';/img\\.php\\?url=(.*?)(?:\\)|["&])',
