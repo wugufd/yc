@@ -7,22 +7,36 @@ var rule = {
     quickSearch:0,
     filterable:0,
     headers:{
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent':'MOBILE_UA',
         'Referer':'https://www.lvsc168.com/'
     },
     class_name:'电影&电视剧&综艺&动漫&短剧',
     class_url:'1&2&3&4&26',
-    img: ';/img\\.php\\?url=(*)',
-    一级:'.myui-vodlist__box;a&&title;a.myui-vodlist__thumb&&data-original;.pic-text&&Text;a.myui-vodlist__thumb&&href',
+    img:';/img\\.php\\?url=(*)',
+    play_parse:true,
+    lazy:`js:
+let html = request(input);
+let m = html.match(/var now=base64decode\\("([^"]+)"\\)/);
+if(!m){return {parse:0,jx:0,url:input};}
+let share = base64Decode(m[1]);
+log("share:"+share);
+let sh = request(share,{headers:{"Referer":"https://www.lvsc168.com/"}});
+let dom = sh.match(/var redirecturl = "([^"]+)"/);
+let mn  = sh.match(/var main = "([^"]+)"/);
+if(!dom||!mn){return {parse:0,jx:0,url:input};}
+let main = mn[1].replace(/\\\\\\//g,"/");
+let playUrl = dom[1]+main;
+log("播放地址:"+playUrl);
+return {parse:0,jx:0,url:playUrl,header:JSON.stringify({Referer:share})};
+`,
+    一级:'.myui-vodlist li;h3.title a&&Text;a.myui-vodlist__thumb&&data-original;.pic-text&&Text;h3.title a&&href',
     二级:{
         "title":"h1.title&&Text",
         "img":".myui-content__thumb .lazyload&&data-original",
-        "desc":".myui-content__detail p&&Text;.text-muted&&Text",
-        "desc":"h1.title font&&Text;.data&&Text;.data:eq(1)&&Text;.data:eq(2)&&Text",
-        "content":".sketch&&Text",
-        "tabs":".nav-tabs:eq(0) li a[href^='#playlist']",
-        "lists":"#fyid li a",
+        "desc":"p.data:eq(0)&&Text",
+        "content":".content&&Text",
+        "tabs":".myui-panel_bd .nav-tabs li a[href^='#playlist']",
+        "lists":".tab-content .tab-pane:eq(#id) ul li a"
     },
-    search:'.searchlist li;a&&title;.lazyload&&data-original;.other&&Text;a&&href',
-    lazy:'js:\nvar html=request(input);\nvar now=html.match(/var now="([^"]+)"/);\nif(!now)return "";\nvar shareUrl=Base64.decode(now[1]);\nlog("shareUrl:"+shareUrl);\nvar shareHtml=request(shareUrl);\nvar redirecturl=shareHtml.match(/var redirecturl="([^"]+)"/);\nvar main=shareHtml.match(/var main="([^"]+)"/);\nif(redirecturl&&main){\n  var url=redirecturl[1]+main[1];\n  log("play url:"+url);\n  return {parse:0,jx:0,url:url}\n}\nreturn "";'
-}
+    搜索:'#searchList li.clearfix;.detail .title a&&Text;.thumb a&&data-original;.detail p.text-muted:eq(0)&&Text;.thumb a&&href'
+};
