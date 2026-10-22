@@ -32,8 +32,8 @@ var rule = {
         title: 'h1&&Text',
         img: '.myui-content__thumb .lazyload&&data-original',
         desc: '.sketch&&Text',
-        tabs: '.nav-tabs:eq(1) li a',
-        lists: '#playlist#id li a',
+        tabs: '.nav-tabs:eq(0) li a[href^="#playlist"]',
+        lists: '#fyid ul li a'
     },
     搜索: '#searchList li;h4.title a&&Text;.thumb a&&data-original;;.thumb a&&href',
     img: ';/img\\.php\\?url=(.*?)(?:\\)|["&])',
