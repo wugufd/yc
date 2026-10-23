@@ -180,14 +180,6 @@
   "ext": "./js/绿色影视.js",
   "searchable": 1,
   "quickSearch": 1
-},{
-  "key": "wangfeimao",
-  "name": "网飞猫",
-  "type": 3,
-  "api": "./lib/drpy2.min.js",
-  "ext": "./js/网飞猫.js",
-  "searchable": 1,
-  "quickSearch": 1
 }
   ],
   "parses": [
