@@ -264,7 +264,7 @@
     },
 	{
 	  "name": "playm3u8解析",
-	  "type": 1,
+	  "type": 0,
 	  "url": "https://www.playm3u8.cn/jiexi.php?url="
 	}
   ]
