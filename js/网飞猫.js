@@ -1,41 +1,42 @@
 var rule = {
-    title: "网飞猫",
-    host: "https://www.ncat2.com",
-    // drpy标准分页格式：[第一页URL]分页URL，第一页不带page，第二页开始带/page/fypage
-    url: "/index.php/vod/show/id/fyclass.html[/index.php/vod/show/id/fyclass/page/fypage.html]",
-    searchUrl: "/index.php/vod/search.html;post#wd=**&page=fypage",
+    类型: '影视',
+    title: '网飞猫',
+    host: 'https://www.ncat2.com',
+    class_name: '电影&电视剧&综艺&动漫',
+    class_url: '1&2&3&4',
     searchable: 1,
-    quickSearch: 0,
-    filterable: 0,
+    quickSearch: 1,
+    filterable: 1,
+    play_parse: true,
+    double: false,
     headers: {
-        "User-Agent": "MOBILE_UA",
-        "Referer": "https://www.ncat2.com/"
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 12; M2012K11AC Build/SKQ1.211006.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/97.0.4692.98 Mobile Safari/537.36',
+        'Referer': 'https://www.ncat2.com/'
     },
-    class_name: "电影&电视剧&综艺&动漫",
-    class_url: "1&2&3&4",
-    // 一级五段式：容器;标题;图片;备注;链接（严格按引擎顺序）
-    一级: ".module-poster-item.module-item;.module-poster-item-title&&Text;.module-item-pic img&&data-original;.module-item-note&&Text;a&&href",
-    搜索: ".module-poster-item.module-item;.module-poster-item-title&&Text;.module-item-pic img&&data-original;.module-item-note&&Text;a&&href",
+    url: '/index.php/vod/show/id/fyclass.html[/index.php/vod/show/id/fyclass/page/fypage.html]',
+    searchUrl: '/index.php/vodsearch/**----------fypage---.html',
+    searchable:1,
+    一级: '.module-items .module-poster-item.module-item;.module-poster-item-title&&Text;.module-item-pic img&&data-original;.module-item-note&&Text;a&&href',
     二级: {
-        title: "h1&&Text",
-        img: ".module-item-pic img&&data-original",
-        desc: ".module-info-item:eq(0)&&Text;.module-info-item:eq(1)&&Text;.module-info-item:eq(2)&&Text;.module-info-item:eq(3)&&Text",
-        content: ".module-info-introduction&&Text",
-        tabs: ".module-tab-item.tab-item",
-        lists: ".module-play-list:eq(#id) a"
+        title: 'h1&&Text',
+        img: '.module-item-pic img&&data-original',
+        desc: '.vod-content .module-info-content&&Text',
+        tabs: '.module-tab .module-tab-items .module-tab-item',
+        lists: '#fyid .module-play-list-link',
     },
     lazy: `js:
-        let html = request(input);
-        let aaaa = html.match(/player_aaaa=({[\\s\\S]*?})</);
-        if (aaaa) {
-            let json = JSON.parse(aaaa[1].trim());
-            if (json.encrypt == 2) {
-                let playUrl = unescape(base64Decode(json.url));
-                input = {parse:0, jx:0, url: playUrl};
+        let html = getHtml(input);
+        let player = html.match(/player_aaaa=(\\{.*?\\})<\\/script>/);
+        if(!player) return input;
+        try{
+            let data = JSON.parse(player[1]);
+            let url = data.url;
+            if(data.encrypt==='2'){
+                url = unescape(base64Decode(url));
             }
+            return {parse:0,jx:0,url:url};
+        }catch(e){
+            return input;
         }
-    `,
-    play_parse: true,
-    parse: 0,
-    jx: 0
+    `
 };
