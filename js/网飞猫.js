@@ -1,6 +1,6 @@
 var rule = {
     类型: '影视',
-    title: '网飞猫',
+    title: '网飞猫1',
     host: 'https://www.ncat2.com',
     class_name: '电影&电视剧&综艺&动漫',
     class_url: '1&2&3&4',
