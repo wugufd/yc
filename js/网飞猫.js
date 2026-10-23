@@ -1,5 +1,5 @@
 var rule = {
-    title: '网飞猫',
+    title: '网飞猫1',
     host: 'https://www.ncat2.com',
     url: '/index.php/vod/show/id/fyclass.html',
     searchUrl: '/index.php/vodsearch/**----------fypage---.html',
