@@ -3,7 +3,7 @@ var rule = {
     host: 'https://www.ncat2.com',
     homeUrl: '/',
     searchUrl: '/index.php/vod/search.html?wd=**&page=fypage',
-    searchable: 2, // 仅开启搜索，不显示分类
+    searchable: 1, // 1=开启搜索
     quickSearch: 1,
     filterable: 0,
     headers: {
