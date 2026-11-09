@@ -1,5 +1,6 @@
 {
-  "sites": [
+"wallpaper": "./mg/rr.jpg",  
+"sites": [
     {
       "key": "jszyapi",
       "name": "急速资源",
