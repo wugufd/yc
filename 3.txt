@@ -1,5 +1,5 @@
 {
-"wallpaper": "./mg/rr.jpg",  
+"wallpaper": "https://avatars.githubusercontent.com/u/58679624?v=4",  
 "sites": [
     {
       "key": "jszyapi",
