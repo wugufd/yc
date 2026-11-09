@@ -1,5 +1,5 @@
 {
-"wallpaper": "https://avatars.githubusercontent.com/u/58679624?v=4",  
+"wallpaper": "https://v4.gh-proxy.org/https://github.com/wugufd/yc/blob/main/img/rr.jpg",  
 "sites": [
     {
       "key": "jszyapi",
