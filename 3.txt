@@ -3,17 +3,14 @@
 "lives": [
     {
       "name": "源A",
-      "type": 0,
       "url": "https://wget.la/https://raw.githubusercontent.com/wsc7758/iptv/master/tv.txt"
     },
     {
       "name": "源B",
-      "type": 0,
       "url": "https://wget.la/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt"
     },
 	{
       "name": "源C",
-      "type": 0,
       "url": "https://wget.la/https://raw.githubusercontent.com/jia070310/lemonTV/main/iptv-fe.m3u"
     }
   ],
